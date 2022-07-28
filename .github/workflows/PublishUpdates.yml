@@ -18,7 +18,7 @@ jobs:
           fi
   Publish_Updates:
     name: Install and publish
-    if: ${{needs.ValidateActor.outputs.ACTOR}} == true
+    # if: ${{needs.ValidateActor.outputs.ACTOR}} == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,7 +31,7 @@ jobs:
           expo-cache: true
           token: ${{ secrets.EXPO_TOKEN }}
       - run: npm install
-      - run: expo publish
+      - run: expo publish --non-interactive
   GenerateNewBuild:
     name: Build new artifact
     runs-on: ubuntu-latest
