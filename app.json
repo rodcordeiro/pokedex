@@ -28,6 +28,7 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       },
+      "package": "com.rodcordeiro.pokedex"
       "versionCode": 1
     },
     "web": {
