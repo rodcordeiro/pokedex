@@ -19,7 +19,7 @@ const Text = styled.Text`
   color: ${(props) => props.theme.color.text};
   font-size: 25px;
   line-height: 30px;
-  font-weight: light;
+  font-weight: 100;
   width: 80%;
 `;
 
