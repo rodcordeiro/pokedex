@@ -1,5 +1,8 @@
 {
     "branchPrefix": "updates/",
+    "baseBranches": ["develop"],
+  "rebaseWhen": "behind-base-branch",
+  
     "packageRules": [
         {
             "updateTypes": [
