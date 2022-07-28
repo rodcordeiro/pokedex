@@ -1,0 +1,54 @@
+name: "Scan code and validate build"
+
+on:
+  push:
+    branches: [
+      "master",
+      "feat/**",
+      "bug/**",
+      "develop"
+    ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ master ]
+  schedule:
+    - cron: '0 3 * * 1'
+
+jobs:
+  CodeQuality:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+        
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+        
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
+    
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+  Audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run NPM audit and create PR with result
+        uses: luisfontes19/npm-audit-action@v0.1.0
+        with:
+          fix: true # To create pull requests with npm audit fix
+          package-lock-only: false
+          force: true
+          github-token: ${{ secrets.GITHUB_TOKEN }} # github token to create the pull request. Here you need to have a secret named TOKEN.
