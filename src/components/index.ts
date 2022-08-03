@@ -1,3 +1,3 @@
 import Button from "./button";
-
-export { Button };
+import SearchInput from "./Search";
+export { Button, SearchInput };

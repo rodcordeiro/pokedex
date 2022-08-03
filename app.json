@@ -2,7 +2,6 @@
   "expo": {
     "name": "pokedex",
     "slug": "pokedex",
-    "title": "pokedex",
     "version": "1.0.0",
     "description": "A simple pokedex",
     "owner": "rodcordeiro",

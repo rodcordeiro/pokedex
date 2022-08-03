@@ -14,3 +14,6 @@ export const Title = styled.Text`
   text-align: left;
   width: 90%;
 `;
+export const Line = styled.View`
+  margin-top: 32px;
+`;
