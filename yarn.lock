@@ -1905,14 +1905,14 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@unform/core@2.1.6", "@unform/core@^2.1.6":
+"@unform/core@2.1.6":
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/@unform/core/-/core-2.1.6.tgz#75df5fe813d4e94af46ad3570da068ff13d71b99"
   integrity sha512-coz9rOS1Y+0zygxTTQB+hY1HJ5ee0A40KBdIy/1IdaiFGT5LhZhCWqMorFh8KcqY3J+SInrpGDMmJYObsjEW9w==
   dependencies:
     dot-object "^2.1.4"
 
-"@unform/mobile@^2.1.6":
+"@unform/mobile@2.1.6":
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/@unform/mobile/-/mobile-2.1.6.tgz#d55bfd2a943662a5783287dbe8d2639792d55c47"
   integrity sha512-ny5xnzj0tFSRISALgc6dUikG6LSeS1SOKCzYXdV625yZ1r72lc7RUExeps3gmHjdvALeXHQodtot/DuFoBSh3w==
@@ -5688,7 +5688,7 @@ react-native-root-siblings@^4.0.0:
   resolved "https://registry.yarnpkg.com/react-native-root-siblings/-/react-native-root-siblings-4.1.1.tgz#b7742db7634a87f507eb99a5fd699c4f10c46ab0"
   integrity sha512-sdmLElNs5PDWqmZmj4/aNH4anyxreaPm61c4ZkRiR8SO/GzLg6KjAbb0e17RmMdnBdD0AIQbS38h/l55YKN4ZA==
 
-react-native-root-toast@^3.4.0:
+react-native-root-toast@3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/react-native-root-toast/-/react-native-root-toast-3.4.0.tgz#f5fedc06c80b0ed20a93be8832d32e9a67762187"
   integrity sha512-2jv9XG9tK0rbXkD3IaO/clSJJQYXRnOCnGliZnYP/Z6I3u2QtdOp5xQ/ni8BbLqpPwSeKfCuO7R9H6iHuAN+Ig==
