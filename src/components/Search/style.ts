@@ -10,7 +10,8 @@ export const Container = styled.View<{ isFocused: boolean }>`
   padding: 10px 15px;
   width: 80%;
   height: 60px;
-  flex-direction: ${(props) => (props.isFocused ? "row-reverse" : "row")};
+  /* flex-direction: ${(props) => (props.isFocused ? "row-reverse" : "row")}; */
+  flex-direction: row;
   transition-property: flex-direction;
   transition-duration: 2s;
   transition-timing-function: ease-in-out;
