@@ -1,5 +1,4 @@
 import React, { useRef, useCallback, useEffect } from "react";
-import styled from "styled-components/native";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/mobile";
 import Toast from "react-native-root-toast";
@@ -72,7 +71,12 @@ const HomeScreen: React.FC = () => {
       <Button
         title="Choose a random Pokemon"
         icon={pokeball}
-        onPress={() => console.log(getPokeId())}
+        onPress={
+          () => {
+            setSearchParam(getPokeId());
+            handleSearch()
+          }
+        }
       />
     </Container>
   );
