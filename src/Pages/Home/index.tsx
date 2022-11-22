@@ -2,33 +2,43 @@ import React, { useRef, useCallback, useEffect } from "react";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/mobile";
 import Toast from "react-native-root-toast";
-
+import { AxiosResponse } from "axios";
+import { useNavigation } from "@react-navigation/native";
 import { Button, SearchInput } from "../../components";
 import pokeball from "../../../assets/icon.png";
 import { Container, Title, Line } from "./style";
+import { usePoke } from "../../hooks/poke";
+import { getPokemon } from "./api";
+import { iPokemonResponse } from "../../utils";
 
 const HomeScreen: React.FC = () => {
+  const { navigate } = useNavigation();
   const formRef = useRef<FormHandles>(null);
   const refInput = useRef<any>();
+  const { setPokemon } = usePoke();
   const [searchParam, setSearchParam] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
   const [toastNotification, setToastNotification] = React.useState<any>();
   const POKEMON_INDEX = 1118;
+
   const handleSearch = useCallback(async () => {
     setLoading(true);
     try {
-      setToastNotification(
-        Toast.show(`Searching: ${searchParam}`, {
-          duration: Toast.durations.LONG,
-          position: Toast.positions.CENTER,
-        })
+      await getPokemon(searchParam).then(
+        (response: AxiosResponse<iPokemonResponse>) => {
+          console.log(response.data);
+          setPokemon(response.data);
+          setLoading(false);
+          // @ts-ignore
+          navigate("PokemonScreen");
+        }
       );
-      console.log({ searchParam });
+
       setLoading(false);
     } catch (err) {
       setLoading(false);
       setToastNotification(
-        Toast.show("Request failed to send.", {
+        Toast.show("Ops, pokemon not found. Try again!", {
           duration: Toast.durations.LONG,
           position: Toast.positions.CENTER,
         })
@@ -44,11 +54,6 @@ const HomeScreen: React.FC = () => {
       return getPokeId();
     }
   }
-  // useEffect(() => {
-  //   if (toastNotification) {
-  //     setTimeout(() => Toast.hide(toastNotification), 2500);
-  //   }
-  // }, [toastNotification]);
 
   return (
     <Container>
@@ -71,12 +76,10 @@ const HomeScreen: React.FC = () => {
       <Button
         title="Choose a random Pokemon"
         icon={pokeball}
-        onPress={
-          () => {
-            setSearchParam(getPokeId());
-            handleSearch()
-          }
-        }
+        onPress={() => {
+          setSearchParam(String(getPokeId()));
+          handleSearch();
+        }}
       />
     </Container>
   );

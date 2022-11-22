@@ -1,3 +1,3 @@
 import HomeScreen from "./Home";
-
-export { HomeScreen };
+import PokemonScreen from "./Pokemon";
+export { HomeScreen, PokemonScreen };
