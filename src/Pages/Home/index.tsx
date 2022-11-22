@@ -21,34 +21,37 @@ const HomeScreen: React.FC = () => {
   const [toastNotification, setToastNotification] = React.useState<any>();
   const POKEMON_INDEX = 1118;
 
-  const handleSearch = useCallback(async () => {
-    setLoading(true);
-    try {
-      await getPokemon(searchParam).then(
-        (response: AxiosResponse<iPokemonResponse>) => {
-          console.log(response.data);
-          setPokemon(response.data);
-          setLoading(false);
-          // @ts-ignore
-          navigate("PokemonScreen");
-        }
-      );
+  const handleSearch = useCallback(
+    async (param?: any) => {
+      setLoading(true);
+      try {
+        await getPokemon(param ? param : searchParam).then(
+          (response: AxiosResponse<iPokemonResponse>) => {
 
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      setToastNotification(
-        Toast.show("Ops, pokemon not found. Try again!", {
-          duration: Toast.durations.LONG,
-          position: Toast.positions.CENTER,
-        })
-      );
-    }
-  }, [searchParam]);
+            setPokemon(response.data);
+            setLoading(false);
+            // @ts-ignore
+            navigate("PokemonScreen");
+          }
+        );
+
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        setToastNotification(
+          Toast.show("Ops, pokemon not found. Try again!", {
+            duration: Toast.durations.LONG,
+            position: Toast.positions.CENTER,
+          })
+        );
+      }
+    },
+    [searchParam]
+  );
 
   function getPokeId(): number {
     const pokeId = Math.floor(Math.random() * POKEMON_INDEX + 1);
-    if (pokeId !== undefined && (pokeId <= 898 || pokeId >= 10001)) {
+    if (pokeId > 0 && (pokeId <= 898 || pokeId >= 10001)) {
       return pokeId;
     } else {
       return getPokeId();
@@ -77,8 +80,7 @@ const HomeScreen: React.FC = () => {
         title="Choose a random Pokemon"
         icon={pokeball}
         onPress={() => {
-          setSearchParam(String(getPokeId()));
-          handleSearch();
+          handleSearch(String(getPokeId()));
         }}
       />
     </Container>

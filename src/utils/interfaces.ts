@@ -115,7 +115,7 @@ export interface iPokemonResponse {
   }[];
   types: {
     slot: number;
-    type: [{ name: string; url: string }];
+    type: { name: string; url: string };
   }[];
   weight: number;
 }

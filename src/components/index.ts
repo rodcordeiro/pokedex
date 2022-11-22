@@ -1,3 +1,5 @@
 import Button from "./button";
 import SearchInput from "./Search";
-export { Button, SearchInput };
+import Tag from "./Typetag";
+
+export { Button, SearchInput, Tag };
