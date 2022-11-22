@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "react-native";
 import { ThemeProvider } from "styled-components";
-import styled from "styled-components/native";
+import { PokeProvider } from "./hooks/poke";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { RootSiblingParent } from "react-native-root-siblings";
+
 import { DefaultTheme, DarkTheme } from "./styles";
-import { HomeScreen } from "./Pages";
+import { HomeScreen, PokemonScreen } from "./Pages";
 const { Navigator, Screen } = createStackNavigator();
 
 export default function Pokedex() {
@@ -16,16 +18,24 @@ export default function Pokedex() {
     <ThemeProvider
       theme={String(currentTheme) === "light" ? DefaultTheme : DarkTheme}
     >
-      <NavigationContainer>
-        <Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Screen name="HomeScreen" component={HomeScreen} />
-        </Navigator>
-        <StatusBar hidden />
-      </NavigationContainer>
+      <PokeProvider>
+        <RootSiblingParent>
+          <NavigationContainer>
+            <Navigator
+              screenOptions={{
+                headerShown: false,
+              }}
+            >
+              <Screen name="HomeScreen" component={HomeScreen} />
+              <Screen
+                name="PokemonScreen"
+                component={PokemonScreen}
+              />
+            </Navigator>
+            <StatusBar hidden />
+          </NavigationContainer>
+        </RootSiblingParent>
+      </PokeProvider>
     </ThemeProvider>
   );
 }

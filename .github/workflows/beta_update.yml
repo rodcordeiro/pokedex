@@ -1,9 +1,8 @@
-name: "Validate build and publish preview"
-
+name: Beta update on development
 on:
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ main ]
+  push:
+    branches:
+      - develop
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -27,9 +26,4 @@ jobs:
         run: yarn install
 
       - name: 🚀 Publish preview
-        run: expo publish --release-channel=pr-${{ github.event.number }} --non-interactive
-
-      - name: 💬 Comment preview
-        uses: expo/expo-github-action/preview-comment@v7
-        with:
-          channel: pr-${{ github.event.number }}
+        run: expo publish --release-channel=beta --non-interactive

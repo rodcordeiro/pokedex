@@ -1,48 +1,29 @@
 import React from "react";
-import styled from "styled-components/native";
+import { TouchableNativeFeedback, TouchableNativeFeedbackProps } from "react-native";
+import { ButtonElement, Text, Image } from "./styles";
 
-interface IButtonStyles {
-  background: string;
-}
-
-const ButtonElement = styled.TouchableOpacity<IButtonStyles>`
-  border-radius: 4px;
-  padding: 10px;
-  width: 80%;
-  height: 100px;
-  background-color: ${(props) =>
-    props.background ? props.background : props.theme.color.button};
-  overflow: hidden;
-`;
-
-const Text = styled.Text`
-  color: ${(props) => props.theme.color.text};
-  font-size: 25px;
-  line-height: 30px;
-  font-weight: light;
-  width: 80%;
-`;
-
-const Image = styled.Image`
-  position: absolute;
-  right: -60px;
-  top: -60px;
-  transform: rotate(-45deg);
-  opacity: 0.25;
-`;
-
-interface IButton {
+interface IButton extends TouchableNativeFeedbackProps {
   title: string;
   icon: string;
   backgroundColor?: string;
 }
 
-const Button: React.FC<IButton> = ({ title, icon, backgroundColor }) => {
+const Button: React.FC<IButton> = ({
+  title,
+  icon,
+  backgroundColor,
+  ...rest
+}) => {
   return (
-    <ButtonElement background={backgroundColor}>
-      <Text>{title}</Text>
-      <Image source={icon} />
-      {/* {icon && <Image source={icon} />} */}
+    <ButtonElement
+      backgroundColor={backgroundColor}
+      {...rest}
+      
+    >
+      <>
+        <Text>{title}</Text>
+        <Image source={icon} />
+      </>
     </ButtonElement>
   );
 };
