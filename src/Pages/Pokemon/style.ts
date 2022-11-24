@@ -1,9 +1,4 @@
 import styled from "styled-components/native";
-import { Dimensions } from "react-native";
-
-interface iHeader {
-  background: string;
-}
 
 export const Container = styled.ScrollView`
   flex: 1;
@@ -12,28 +7,29 @@ export const Container = styled.ScrollView`
   height: 100%;
 `;
 
-export const Header = styled.View<iHeader>`
+export const Header = styled.View`
   padding: 5px 10px;
-  background-color: ${(props) => props.background};
   width: 100%;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  margin-top: 20%;
 `;
 export const PokeName = styled.Text`
-  /* position: absolute;
-  bottom: 5px;
-  background-color: #f4f4f490;
-  border-radius: 15px;
-  min-width: 50%;
-  width: auto;*/
   padding: 0 20px;
-  text-align: center;
+  text-align: left;
   height: 40px;
   line-height: 40px;
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
   color: white;
   text-transform: uppercase;
+  font-family: sans-serif;
+  
+`;
+export const PokeId = styled.Text`
+  color: white;
+  font-size: 18px;
+  font-family: sans-serif;
 `;
 
 export const PokeImage = styled.Image`

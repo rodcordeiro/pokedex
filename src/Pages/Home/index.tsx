@@ -16,7 +16,7 @@ const HomeScreen: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const refInput = useRef<any>();
   const { setPokemon } = usePoke();
-  const [searchParam, setSearchParam] = React.useState<string>("");
+  const [searchParam, setSearchParam] = React.useState<string>();
   const [loading, setLoading] = React.useState<boolean>(false);
   const [toastNotification, setToastNotification] = React.useState<any>();
   const POKEMON_INDEX = 1118;
@@ -25,18 +25,21 @@ const HomeScreen: React.FC = () => {
     async (param?: any) => {
       setLoading(true);
       try {
-        await getPokemon(param ? param : searchParam).then(
-          (response: AxiosResponse<iPokemonResponse>) => {
-
+        await getPokemon(!searchParam ? param : searchParam.toLowerCase())
+          .then((response: AxiosResponse<iPokemonResponse>) => {
+            // console.log(response.data);
             setPokemon(response.data);
             setLoading(false);
             // @ts-ignore
             navigate("PokemonScreen");
-          }
-        );
-
-        setLoading(false);
+          })
+          .catch((err) => {
+            console.error(err);
+            setLoading(false);
+            return;
+          });
       } catch (err) {
+        console.error(err);
         setLoading(false);
         setToastNotification(
           Toast.show("Ops, pokemon not found. Try again!", {
