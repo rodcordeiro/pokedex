@@ -1,18 +1,22 @@
-import React from "react";
+import React, { MemoExoticComponent } from "react";
 import Bug from "../assets/bug";
+import Dark from "../assets/dark";
+import Dragon from "../assets/dragon";
+import Electric from "../assets/dragon";
+import Fairy from "../assets/fairy";
 
-export function getIcon(type: string): any {
+export function getIcon(type: string): MemoExoticComponent<any> {
   switch (type) {
     case "bug":
       return Bug;
     case "dark":
-      return Bug;
+      return Dark;
     case "dragon":
-      return Bug;
+      return Dragon;
     case "electric":
-      return Bug;
+      return Electric;
     case "fairy":
-      return Bug;
+      return Fairy;
     case "fighting":
       return Bug;
     case "fire":

@@ -12,4 +12,4 @@ const Bug = () => {
     </Svg>
   );
 };
-export default Bug;
+export default React.memo(Bug);
