@@ -4,6 +4,7 @@ import Dark from "../assets/dark";
 import Dragon from "../assets/dragon";
 import Electric from "../assets/dragon";
 import Fairy from "../assets/fairy";
+import Fighting from "../assets/fighting";
 
 export function getIcon(type: string): MemoExoticComponent<any> {
   switch (type) {
@@ -18,7 +19,7 @@ export function getIcon(type: string): MemoExoticComponent<any> {
     case "fairy":
       return Fairy;
     case "fighting":
-      return Bug;
+      return Fighting;
     case "fire":
       return Bug;
     case "flying":

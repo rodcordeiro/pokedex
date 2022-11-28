@@ -2,7 +2,7 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 const Fairy = () => {
   return (
-    <Svg width="50" height="50" viewBox="0 0 512 512" fill="none">
+    <Svg width="15" height="15" viewBox="0 0 512 512" fill="none">
       <Path
         fill-rule="evenodd"
         clip-rule="evenodd"
