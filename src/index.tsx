@@ -9,28 +9,38 @@ import { RootSiblingParent } from "react-native-root-siblings";
 
 import { DefaultTheme, DarkTheme } from "./styles";
 import Routes from "./routes";
+import { useFonts } from "expo-font";
+import {
+  Quicksand_400Regular,
+  Quicksand_300Light,
+  Quicksand_700Bold,
+} from "@expo-google-fonts/quicksand";
+import { PTMono_400Regular } from "@expo-google-fonts/pt-mono";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function Pokedex() {
   const currentTheme = useColorScheme();
+  let [fontsLoaded] = useFonts({
+    PTMono_400Regular,
+    Quicksand_400Regular,
+    Quicksand_300Light,
+    Quicksand_700Bold,
+  });
   useEffect(() => {
     async function prepare() {
       try {
-        // Pre-load fonts, make any API calls you need to do here
-        // await Font.loadAsync(Entypo.font);
-        // Artificially delay for two seconds to simulate a slow loading
-        // experience. Please remove this if you copy and paste the code!
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        if (fontsLoaded) {
+          console.log("oi");
+          await SplashScreen.hideAsync();
+        }
       } catch (e) {
         console.warn(e);
-      } finally {
-        await SplashScreen.hideAsync();
       }
     }
 
     prepare();
-  }, []);
+  }, [fontsLoaded]);
   return (
     <ThemeProvider
       theme={String(currentTheme) === "light" ? DefaultTheme : DarkTheme}

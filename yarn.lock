@@ -1101,6 +1101,16 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
+"@expo-google-fonts/pt-mono@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/pt-mono/-/pt-mono-0.2.2.tgz#911d5d7adf82cd04604083c28f10bf3c85c950bb"
+  integrity sha512-Ywhkm04w2U+2JT9GmVarM0pg8IZGLh0RoVZ+d2dn3Oz5hJdiD2IIghc8nBAlvIg51QlfxRu2opAVHUcEhnQDHw==
+
+"@expo-google-fonts/quicksand@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/quicksand/-/quicksand-0.2.2.tgz#44f9ebd4f6d256dd6413f95d4e2df6200016e57c"
+  integrity sha512-lK4KzY5dxKm+Vfvfcgiu41u7A39s7PJak0/bcmrCUTNUrz+ke80R3L98c6nbRCrSXD6ZOUmht12aJv2+zgglZg==
+
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@expo/bunyan/-/bunyan-4.0.0.tgz#be0c1de943c7987a9fbd309ea0b1acd605890c7b"
@@ -3728,7 +3738,7 @@ expo-file-system@~15.1.0:
   dependencies:
     uuid "^3.4.0"
 
-expo-font@~10.2.1:
+expo-font@~10.2.0, expo-font@~10.2.1:
   version "10.2.1"
   resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-10.2.1.tgz#c13e65e864befaa4710504096b68635c6f7e48d8"
   integrity sha512-sxy5GrdtY+Ka8Wo5wnrcFFeO6MbYC6Dris5wMLqshvVK6BneJNMUsFvwRfvVgg0TzsmMAc3Rlca2xyZ8ettinw==

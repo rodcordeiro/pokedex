@@ -20,16 +20,14 @@ export const PokeName = styled.Text`
   height: 40px;
   line-height: 40px;
   font-size: 40px;
-  font-weight: bold;
   color: white;
   text-transform: uppercase;
-  font-family: sans-serif;
-  
+  font-family: Quicksand_700Bold;
 `;
 export const PokeId = styled.Text`
   color: white;
   font-size: 18px;
-  font-family: sans-serif;
+  font-family: PTMono_400Regular;
 `;
 
 export const PokeImage = styled.Image`

@@ -4,6 +4,7 @@ import * as Updates from "expo-updates";
 import Pokedex from './src';
 
 export default function App() {
+  
   useEffect(() => {
     async function updateApp() {
       if(process.env.NODE_ENV === "development") return;

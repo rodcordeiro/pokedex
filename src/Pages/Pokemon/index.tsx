@@ -4,8 +4,10 @@ import { usePoke } from "../../hooks/poke";
 import { getColor } from "../../utils";
 import { Container, Header, PokeId, PokeImage, PokeName } from "./style";
 import { Tag } from "../../components";
+
 const PokemonScreen: React.FC = () => {
   const { pokemon } = usePoke();
+
   console.log(
     "pokemon",
     pokemon!.types[0].type.name,
@@ -22,17 +24,18 @@ const PokemonScreen: React.FC = () => {
         backgroundColor: getColor(pokemon!.types[0].type.name).background,
       }}
     >
+      
       <Header>
         <View
           style={{
-            flexDirection: "row",
+            flexDirection: pokemon!.name.length > 8 ? "column" : "row",
             justifyContent: "center",
             alignItems: "baseline",
             alignSelf: "flex-start",
           }}
         >
           <PokeName>{pokemon!.name}</PokeName>
-          <PokeId>#{paddy(pokemon!.id, 4)}</PokeId>
+          <PokeId style={{ marginLeft: pokemon!.name.length > 8 ? 25 : 0 }}>#{paddy(pokemon!.id, 4)}</PokeId>
         </View>
         <View
           style={{
