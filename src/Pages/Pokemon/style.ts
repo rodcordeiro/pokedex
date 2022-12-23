@@ -1,42 +1,44 @@
 import styled from "styled-components/native";
-import { Dimensions } from "react-native";
 
-interface iHeader {
-  background: string;
-}
 
-export const Container = styled.ScrollView`
-  flex: 1;
-  background-color: ${(props) => props.theme.color.background};
-  width: 100%;
-  height: 100%;
-`;
-
-export const Header = styled.View<iHeader>`
+export const Header = styled.View`
   padding: 5px 10px;
-  background-color: ${(props) => props.background};
   width: 100%;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  margin-top: 20%;
 `;
 export const PokeName = styled.Text`
-  /* position: absolute;
-  bottom: 5px;
-  background-color: #f4f4f490;
-  border-radius: 15px;
-  min-width: 50%;
-  width: auto;*/
   padding: 0 20px;
-  text-align: center;
+  text-align: left;
   height: 40px;
   line-height: 40px;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 40px;
   color: white;
   text-transform: uppercase;
+  font-family: Quicksand_700Bold;
+`;
+export const PokeId = styled.Text`
+  color: white;
+  font-size: 18px;
+  font-family: PTMono_400Regular;
 `;
 
 export const PokeImage = styled.Image`
   height: 250px;
   width: auto;
+`;
+export const PokeData = styled.View`
+  width: 100%;
+  max-width: 400px;
+  min-height: 400px;
+  flex: 1;
+  background-color: white;
+`;
+
+export const PokemonDescription = styled.Text`
+  font-family: Quicksand_700Bold;
+  width: 90%;
+  padding: 0px 5px;
+  margin: 10px;
 `;

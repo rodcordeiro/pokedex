@@ -1,16 +1,16 @@
 import React, { createContext, useContext, useState } from "react";
-import { iPokeType, iPokemonResponse } from "../utils";
+import { iPokeType, Pokemon } from "../utils";
 
 interface iPokeContext {
-  pokemon: iPokemonResponse | null;
-  setPokemon: React.Dispatch<React.SetStateAction<iPokemonResponse>>;
+  pokemon: Pokemon | null;
+  setPokemon: React.Dispatch<React.SetStateAction<Pokemon>>;
 }
 
 const PokeContext = createContext<iPokeContext>({} as iPokeContext);
 
 export const PokeProvider: React.FC<any> = ({ children }) => {
-  const [pokemon, setPokemon] = useState<iPokemonResponse>(
-    {} as iPokemonResponse
+  const [pokemon, setPokemon] = useState<Pokemon>(
+    {} as Pokemon
   );
   return (
     <PokeContext.Provider

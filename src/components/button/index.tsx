@@ -1,10 +1,13 @@
 import React from "react";
-import { TouchableNativeFeedback, TouchableNativeFeedbackProps } from "react-native";
+import {
+  ImageSourcePropType,
+  TouchableNativeFeedbackProps,
+} from "react-native";
 import { ButtonElement, Text, Image } from "./styles";
 
 interface IButton extends TouchableNativeFeedbackProps {
   title: string;
-  icon: string;
+  icon: ImageSourcePropType | string;
   backgroundColor?: string;
 }
 
@@ -15,11 +18,7 @@ const Button: React.FC<IButton> = ({
   ...rest
 }) => {
   return (
-    <ButtonElement
-      backgroundColor={backgroundColor}
-      {...rest}
-      
-    >
+    <ButtonElement backgroundColor={backgroundColor} {...rest}>
       <>
         <Text>{title}</Text>
         <Image source={icon} />
