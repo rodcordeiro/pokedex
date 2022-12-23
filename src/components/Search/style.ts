@@ -9,7 +9,7 @@ export const Container = styled.View<{ isFocused: boolean }>`
   border-color: ${(props) => (props.isFocused ? "lightblue" : "black")};
   border-radius: 4px;
   padding: 10px 15px;
-  width: 80%;
+  min-width: 80%;
   height: 60px;
   flex-direction: row;
   transition-property: flex-direction;

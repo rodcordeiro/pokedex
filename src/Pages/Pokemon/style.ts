@@ -1,11 +1,5 @@
 import styled from "styled-components/native";
 
-export const Container = styled.ScrollView`
-  flex: 1;
-  background-color: ${(props) => props.theme.color.background};
-  width: 100%;
-  height: 100%;
-`;
 
 export const Header = styled.View`
   padding: 5px 10px;
@@ -33,4 +27,18 @@ export const PokeId = styled.Text`
 export const PokeImage = styled.Image`
   height: 250px;
   width: auto;
+`;
+export const PokeData = styled.View`
+  width: 100%;
+  max-width: 400px;
+  min-height: 400px;
+  flex: 1;
+  background-color: white;
+`;
+
+export const PokemonDescription = styled.Text`
+  font-family: Quicksand_700Bold;
+  width: 90%;
+  padding: 0px 5px;
+  margin: 10px;
 `;

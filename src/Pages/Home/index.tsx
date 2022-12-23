@@ -8,8 +8,8 @@ import { Button, SearchInput } from "../../components";
 import pokeball from "../../../assets/icon.png";
 import { Container, Title, Line } from "./style";
 import { usePoke } from "../../hooks/poke";
-import { getPokemon } from "./api";
-import { iPokemonResponse } from "../../utils";
+import { getPokemon, getPokemonDescription } from "./api";
+import { IPokemonResponse, IPokemonSpecie, Pokemon } from "../../utils";
 
 const HomeScreen: React.FC = () => {
   const { navigate } = useNavigation();
@@ -26,9 +26,21 @@ const HomeScreen: React.FC = () => {
       setLoading(true);
       try {
         await getPokemon(!searchParam ? param : searchParam.toLowerCase())
-          .then((response: AxiosResponse<iPokemonResponse>) => {
+          .then(async (pokemonData: AxiosResponse<IPokemonResponse>) => {
             // console.log(response.data);
-            setPokemon(response.data);
+            const pokemon: Pokemon = pokemonData.data;
+
+            await getPokemonDescription(pokemonData.data.species.url).then(
+              (specieData: AxiosResponse<IPokemonSpecie>) => {
+                pokemon.description = specieData.data.flavor_text_entries
+                  .filter((entry) => entry.language.name === "en")[0]
+                  .flavor_text.replace(/\n/gi, " ");
+                pokemon.is_baby = specieData.data.is_baby;
+                pokemon.is_legendary = specieData.data.is_legendary;
+                pokemon.is_mythical = specieData.data.is_mythical;
+              }
+            );
+            setPokemon(pokemon);
             setLoading(false);
             // @ts-ignore
             navigate("PokemonScreen");

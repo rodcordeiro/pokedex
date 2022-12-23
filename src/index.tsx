@@ -31,7 +31,6 @@ export default function Pokedex() {
     async function prepare() {
       try {
         if (fontsLoaded) {
-          console.log("oi");
           await SplashScreen.hideAsync();
         }
       } catch (e) {
