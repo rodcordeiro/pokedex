@@ -10,7 +10,7 @@ export const StatsContainer = styled.View`
 export const Stat = styled.View`
   width: 100%;
   padding: 5px 10px;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   /* flex-direction: row;
   align-items: center;
   justify-content: flex-start; */

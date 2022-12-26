@@ -8,8 +8,14 @@ import { Button, SearchInput } from "../../components";
 import pokeball from "../../../assets/icon.png";
 import { Container, Title, Line } from "./style";
 import { usePoke } from "../../hooks/poke";
-import { getPokemon, getPokemonDescription } from "./api";
-import { IPokemonResponse, IPokemonSpecie, Pokemon } from "../../utils";
+import { getPokemon, getPokemonSpecie, getPokemonEvolutionChain } from "./api";
+import {
+  IPokemonResponse,
+  IPokemonSpecie,
+  IPokemonEvolutionChain,
+  Pokemon,
+  getColor,
+} from "../../utils";
 
 const HomeScreen: React.FC = () => {
   const { navigate } = useNavigation();
@@ -27,17 +33,78 @@ const HomeScreen: React.FC = () => {
       try {
         await getPokemon(!searchParam ? param : searchParam.toLowerCase())
           .then(async (pokemonData: AxiosResponse<IPokemonResponse>) => {
-            console.log(pokemonData.data);
+            // console.log(pokemonData.data);
             const pokemon: Pokemon = pokemonData.data;
 
-            await getPokemonDescription(pokemonData.data.species.url).then(
-              (specieData: AxiosResponse<IPokemonSpecie>) => {
+            await getPokemonSpecie(pokemonData.data.species.url).then(
+              async (specieData: AxiosResponse<IPokemonSpecie>) => {
+                if (specieData.data.evolution_chain) {
+                  await getPokemonEvolutionChain(
+                    specieData.data.evolution_chain.url
+                  ).then(
+                    async (evData: AxiosResponse<IPokemonEvolutionChain>) => {
+                      const evos = [];
+                      if (
+                        evData.data.chain.species.name === pokemonData.data.name
+                      ) {
+                        evos.push({
+                          name: evData.data.chain.species.name,
+                          img: pokemonData.data.sprites.front_default,
+                          id: evData.data.id,
+                        });
+                      } else {
+                        evos.push(
+                          await getPokemon(evData.data.chain.species.name).then(
+                            (response: AxiosResponse<IPokemonResponse>) => ({
+                              name: response.data.name,
+                              img: response.data.sprites.front_default,
+                              id: response.data.id,
+                            })
+                          )
+                        );
+                      }
+                      console.log(
+                        evData.data.chain.species.name,
+                        evData.data.chain.is_baby
+                      );
+                      if (evData.data.chain.evolves_to.length) {
+                        let evo = evData.data.chain.evolves_to[0];
+                        console.log(evo.species.name, evo.is_baby);
+                        evos.push(
+                          await getPokemon(evo.species.name).then(
+                            (response: AxiosResponse<IPokemonResponse>) => ({
+                              name: response.data.name,
+                              img: response.data.sprites.front_default,
+                              id: response.data.id,
+                            })
+                          )
+                        );
+                        if (evo.evolves_to.length) {
+                          evo = evo.evolves_to[0];
+                          console.log(evo.species.name, evo.is_baby);
+                          evos.push(
+                            await getPokemon(evo.species.name).then(
+                              (response: AxiosResponse<IPokemonResponse>) => ({
+                                name: response.data.name,
+                                img: response.data.sprites.front_default,
+                                id: response.data.id,
+                              })
+                            )
+                          );
+                        }
+                      }
+                      pokemon.evolutions = evos;
+                    }
+                  );
+                }
+
                 pokemon.description = specieData.data.flavor_text_entries
                   .filter((entry) => entry.language.name === "en")[0]
                   .flavor_text.replace(/\n/gi, " ");
                 pokemon.is_baby = specieData.data.is_baby;
                 pokemon.is_legendary = specieData.data.is_legendary;
                 pokemon.is_mythical = specieData.data.is_mythical;
+                pokemon.color = getColor(pokemonData.data.types[0].type.name);
               }
             );
             setPokemon(pokemon);

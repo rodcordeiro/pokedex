@@ -1,4 +1,6 @@
-export function getColor(type: string): { tag: string; background: string } {
+import { IColors } from "./interfaces";
+
+export function getColor(type: string): IColors {
   switch (type) {
     case "bug":
       return { tag: "#94BC4A", background: "#94BC4AA0" };

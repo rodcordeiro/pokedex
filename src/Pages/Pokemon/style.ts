@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
 
-
 export const Header = styled.View`
   padding: 5px 10px;
   width: 100%;
@@ -16,8 +15,11 @@ export const PokeName = styled.Text`
   font-size: 40px;
   color: white;
   text-transform: uppercase;
+  text-emphasis: inherit;
+  text-emphasis-color: black;
   font-family: Quicksand_700Bold;
 `;
+
 export const PokeId = styled.Text`
   color: white;
   font-size: 18px;
@@ -25,7 +27,7 @@ export const PokeId = styled.Text`
 `;
 
 export const PokeImage = styled.Image`
-  height: 250px;
+  /* height: 250px; */
   width: auto;
 `;
 export const PokeData = styled.View`
@@ -38,7 +40,9 @@ export const PokeData = styled.View`
 
 export const PokemonDescription = styled.Text`
   font-family: Quicksand_700Bold;
-  width: 90%;
+  text-align: justify;
+  width: 80%;
   padding: 0px 5px;
   margin: 10px;
+  justify-self: center;
 `;
