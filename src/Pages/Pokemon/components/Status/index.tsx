@@ -14,9 +14,10 @@ interface IStatus {
         speed: number;
       }
     | { [key: string]: number };
+  color: string;
 }
 
-const PokemonStatus = ({ stats }: IStatus) => {
+const PokemonStatus = ({ stats, color }: IStatus) => {
   console.log({ stats });
   return (
     <StatsContainer>
@@ -33,7 +34,8 @@ const PokemonStatus = ({ stats }: IStatus) => {
         </Text>
         <ProgressBar
           progress={stats.hp / 400}
-          color="#85bb65"
+          color={color}
+          // color="#85bb65"
           style={styles.progress}
           animatedValue={stats.hp / 400}
         />
@@ -51,7 +53,7 @@ const PokemonStatus = ({ stats }: IStatus) => {
         </Text>
         <ProgressBar
           progress={stats.attack / 400}
-          color="#85bb65"
+          color={color}
           style={styles.progress}
         />
       </Stat>
@@ -68,7 +70,7 @@ const PokemonStatus = ({ stats }: IStatus) => {
         </Text>
         <ProgressBar
           progress={stats.defense / 400}
-          color="#85bb65"
+          color={color}
           style={styles.progress}
         />
       </Stat>
@@ -85,7 +87,7 @@ const PokemonStatus = ({ stats }: IStatus) => {
         </Text>
         <ProgressBar
           progress={stats.speed / 400}
-          color="#85bb65"
+          color={color}
           style={styles.progress}
         />
       </Stat>
@@ -102,7 +104,7 @@ const PokemonStatus = ({ stats }: IStatus) => {
         </Text>
         <ProgressBar
           progress={stats.specialAttack / 400}
-          color="#85bb65"
+          color={color}
           style={styles.progress}
         />
       </Stat>
@@ -119,7 +121,7 @@ const PokemonStatus = ({ stats }: IStatus) => {
         </Text>
         <ProgressBar
           progress={stats.specialDefense / 400}
-          color="#85bb65"
+          color={color}
           style={styles.progress}
         />
       </Stat>

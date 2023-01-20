@@ -8,6 +8,7 @@ import Fighting from "../assets/fighting";
 import Fire from "../assets/fire";
 import Flying from "../assets/flying";
 
+import Pokeball from "../assets/pokeball_2";
 export function getIcon(type: string): MemoExoticComponent<any> {
   switch (type) {
     case "bug":
@@ -26,27 +27,27 @@ export function getIcon(type: string): MemoExoticComponent<any> {
       return Fire;
     case "flying":
       return Flying;
-    case "ghost":
-      return Bug;
-    case "grass":
-      return Bug;
-    case "ground":
-      return Bug;
-    case "ice":
-      return Bug;
-    case "normal":
-      return Bug;
-    case "poison":
-      return Bug;
-    case "psychic":
-      return Bug;
-    case "rock":
-      return Bug;
-    case "steel":
-      return Bug;
-    case "water":
-      return Bug;
+    // case "ghost":
+    //   return Bug;
+    // case "grass":
+    //   return Bug;
+    // case "ground":
+    //   return Bug;
+    // case "ice":
+    //   return Bug;
+    // case "normal":
+    //   return Bug;
+    // case "poison":
+    //   return Bug;
+    // case "psychic":
+    //   return Bug;
+    // case "rock":
+    //   return Bug;
+    // case "steel":
+    //   return Bug;
+    // case "water":
+    //   return Bug;
     default:
-      return Bug;
+      return Pokeball;
   }
 }

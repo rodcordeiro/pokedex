@@ -1,3 +1,7 @@
+export interface IColors {
+  tag: string;
+  background: string;
+}
 export interface iAbilities {
   ability: {
     name: string;
@@ -41,6 +45,54 @@ export interface iMoves {
       url: string;
     };
   }[];
+}
+
+interface IEvolutionDetails {
+  gender: any;
+  held_item: any;
+  item: any;
+  known_move: any;
+  known_move_type: any;
+  location: any;
+  min_affection: any;
+  min_beauty: any;
+  min_happiness: any;
+  min_level: 16;
+  needs_overworld_rain: boolean;
+  party_species: any;
+  party_type: any;
+  relative_physical_stats: any;
+  time_of_day: "";
+  trade_species: any;
+  trigger: {
+    name: string;
+    url: string;
+  };
+  turn_upside_down: boolean;
+}
+interface IEvolvesTo {
+  evolution_details: IEvolutionDetails[];
+  evolves_to: IEvolvesTo[];
+  is_baby: boolean;
+  species: {
+    name: string;
+    url: string;
+  };
+}
+export interface IPokemonEvolutionChain {
+  // https://pokeapi.co/api/v2/evolution-chain/2/
+
+  baby_trigger_item: any;
+  chain: {
+    evolution_details: any[];
+    evolves_to: IEvolvesTo[];
+    is_baby: boolean;
+    species: {
+      name: string;
+      url: string;
+    };
+  };
+  id: number;
 }
 export interface IPokemonResponse {
   abilities: iAbilities[];
@@ -229,10 +281,16 @@ export interface IPokemonSpecie {
 }
 
 export interface IPokemon extends IPokemonResponse {
-  description?: string;
-  is_baby?: boolean;
-  is_legendary?: boolean;
-  is_mythical?: boolean;
+  description: string;
+  is_baby: boolean;
+  is_legendary: boolean;
+  is_mythical: boolean;
+  color: IColors;
+  evolutions: {
+    name: string;
+    img: string;
+    id: number;
+  }[];
 }
 
-export type Pokemon = IPokemon;
+export type Pokemon = Partial<IPokemon>;

@@ -1,65 +1,37 @@
-import * as SQLite from "expo-sqlite";
+import { DatabaseConnection } from "./connection";
 
-function openDb() {
-  const db = SQLite.openDatabase("rod_pokedex.db");
-  // prepare();
-  return db;
-}
+export class Database {
+  public db: any = null;
+  constructor() {
+    this.db = DatabaseConnection.getConnection();
+    this.db.exec([{ sql: "PRAGMA foreign_keys = ON;", args: [] }], false, () =>
+      console.log("Foreign keys turned on")
+    );
+    this.InitDb();
+  }
+  private InitDb() {
+    let sql = [
+      "CREATE TABLE IF NOT EXISTS \
+        `pokemon` (\
+          `_id` INTEGER not null primary key autoincrement,\
+          `index` INTEGER not null default CURRENT_TIMESTAMP,\
+          `name` varchar(255) not null\
+        );",
+    ];
 
-export const Database = openDb();
-
-function query(query: string, callback?: SQLite.SQLStatementCallback) {
-  const Database = openDb();
-  return Database.transaction((tx) => {
-    return tx.executeSql(
-      query,
-      [],
-      (_, results) => {
-        console.log({ query, _, results });
-        // @ts-ignore
-        return callback(_, results);
+    this.db.transaction(
+      (tx: { executeSql: (arg0: string) => void }) => {
+        for (var i = 0; i < sql.length; i++) {
+          tx.executeSql(sql[i]);
+        }
       },
-      // @ts-ignore
-      (_, errs) => {
-        console.error(_, errs);
-        return;
+      (error: any) => {
+        console.log("\nerror call back : " + JSON.stringify(error));
+        console.error(error);
+      },
+      () => {
+        console.log("transaction complete call back ");
       }
     );
-  });
-}
-function prepare() {
-  const sql =
-    "CREATE TABLE IF NOT EXISTS \
-    `pokemon` (\
-      `_id` integer not null primary key auto_increment,\
-      `index` varchar(6) not null default CURRENT_TIMESTAMP,\
-      `name` varchar(255) not null,\
-    );";
-
-  query(sql, () => {});
-}
-
-export function save(index: string, name: string) {
-  console.log("save", { index, name });
-  query(
-    `INSERT INTO pokemon (index,name) VALUES('${index}','${name}')`,
-    (_, results) => {
-      return results;
-    }
-  );
-}
-export function remove(index: string) {
-  console.log("remove", { index });
-  query(`DELETE FROM pokemon WHERE index like '${index}'`, (_, results) => {
-    return results;
-  });
-}
-export function findById(index: string) {
-  return query(
-    `SELECT * FROM pokemon WHERE index like '${index}'`,
-    (_, results) => {
-      console.log("results", results);
-      return results;
-    }
-  );
+  }
 }
