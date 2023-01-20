@@ -13,7 +13,7 @@ import {
   PokemonDescription,
   PokeName,
 } from "./style";
-import { Tag } from "../../components";
+import { BackArrow, Tag } from "../../components";
 import PokemonStatus from "./components/Status";
 
 const PokemonScreen: React.FC = () => {
@@ -36,11 +36,18 @@ const PokemonScreen: React.FC = () => {
       }) => {
         if (contentOffset.y <= 10) {
           setOptions({
-            headerShown: true,
+            headerLeft: () => <BackArrow />,
+            headerTransparent: true,
           });
         } else {
           setOptions({
-            headerShown: false,
+            headerLeft: () => <></>,
+            // headerTransparent: false,
+            // headerStyle: {
+            //   backgroundColor: pokemon?.color?.background,
+            //   elevation: 0,
+            //   opacity: 5,
+            // },
           });
         }
       }}
@@ -145,6 +152,11 @@ const PokemonScreen: React.FC = () => {
         alwaysBounceHorizontal
         pagingEnabled
         persistentScrollbar
+        style={{
+          borderTopLeftRadius: 25,
+          borderTopRightRadius: 25,
+          backgroundColor: "white",
+        }}
       >
         <PokeData>
           <PokemonDescription>{pokemon?.description}</PokemonDescription>

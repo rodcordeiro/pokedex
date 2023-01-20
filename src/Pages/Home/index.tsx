@@ -70,18 +70,13 @@ const HomeScreen: React.FC = () => {
                       if (evData.data.chain.evolves_to.length) {
                         let evo = evData.data.chain.evolves_to[0];
                         console.log(evo.species.name, evo.is_baby);
-                        evos.push(
-                          await getPokemon(evo.species.name).then(
-                            (response: AxiosResponse<IPokemonResponse>) => ({
-                              name: response.data.name,
-                              img: response.data.sprites.front_default,
-                              id: response.data.id,
-                            })
-                          )
-                        );
-                        if (evo.evolves_to.length) {
-                          evo = evo.evolves_to[0];
-                          console.log(evo.species.name, evo.is_baby);
+                        if (evo.species.name === pokemonData.data.name) {
+                          evos.push({
+                            name: evo.species.name,
+                            img: pokemonData.data.sprites.front_default,
+                            id: pokemonData.data.id,
+                          });
+                        } else {
                           evos.push(
                             await getPokemon(evo.species.name).then(
                               (response: AxiosResponse<IPokemonResponse>) => ({
@@ -91,6 +86,29 @@ const HomeScreen: React.FC = () => {
                               })
                             )
                           );
+                        }
+                        if (evo.evolves_to.length) {
+                          evo = evo.evolves_to[0];
+
+                          if (evo.species.name === pokemonData.data.name) {
+                            evos.push({
+                              name: evo.species.name,
+                              img: pokemonData.data.sprites.front_default,
+                              id: pokemonData.data.id,
+                            });
+                          } else {
+                            evos.push(
+                              await getPokemon(evo.species.name).then(
+                                (
+                                  response: AxiosResponse<IPokemonResponse>
+                                ) => ({
+                                  name: response.data.name,
+                                  img: response.data.sprites.front_default,
+                                  id: response.data.id,
+                                })
+                              )
+                            );
+                          }
                         }
                       }
                       pokemon.evolutions = evos;

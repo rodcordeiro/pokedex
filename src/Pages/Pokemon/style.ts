@@ -35,7 +35,7 @@ export const PokeData = styled.View`
   max-width: 400px;
   min-height: 400px;
   flex: 1;
-  background-color: white;
+  /* background-color: white; */
 `;
 
 export const PokemonDescription = styled.Text`
