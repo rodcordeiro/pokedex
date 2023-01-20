@@ -6,7 +6,7 @@ import { PokeProvider } from "./hooks/poke";
 import * as SplashScreen from "expo-splash-screen";
 
 import { RootSiblingParent } from "react-native-root-siblings";
-
+import { Database } from "./database";
 import { DefaultTheme, DarkTheme } from "./styles";
 import Routes from "./routes";
 import { useFonts } from "expo-font";
@@ -33,6 +33,7 @@ export default function Pokedex() {
         if (fontsLoaded) {
           await SplashScreen.hideAsync();
         }
+        new Database();
       } catch (e) {
         console.warn(e);
       }

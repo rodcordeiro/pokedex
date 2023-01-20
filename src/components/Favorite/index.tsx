@@ -1,26 +1,40 @@
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React, {
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+  useLayoutEffect,
+} from "react";
 import Icon from "@expo/vector-icons/FontAwesome";
 import { usePoke } from "../../hooks/poke";
-// import { Database, save, findById, remove } from "../../database";
+import { PokemonService } from "../../services/pokemon";
 import { BorderlessButton } from "react-native-gesture-handler";
 import { StyleSheet, View } from "react-native";
+import { FavPokemon } from "../../models/pokemon";
 
 const Favorite = () => {
-
   const [favorited, setFavorited] = useState<boolean>(false);
-  // const { pokemon } = usePoke();
-  // useEffect(() => {
-  //   // const data = findById(String(pokemon?.id));
-  //   // console.log(data);
-  // }, [pokemon]);
+  const [rendered, setRendered] = useState<boolean>(false);
+  const service = useMemo(() => new PokemonService(), []);
+  const { pokemon } = usePoke();
+  useLayoutEffect(() => {
+    (async () => {
+      const data: any = await service.findById(Number(pokemon?.id));
+      console.log("data", data["_array"]);
+      if (data["length"] > 0) {
+        setFavorited(true);
+      }
+    })();
+  }, [pokemon]);
 
   const handleFavoriting = useCallback(() => {
     if (favorited) {
       console.log("remove");
-      // remove(String(pokemon?.id));
+      service.deleteById(Number(pokemon?.id));
     } else {
       console.log("save");
-      // save(String(pokemon?.id), pokemon?.name!);
+      const Poke = new FavPokemon(pokemon?.id, String(pokemon?.name));
+      service.addData(Poke);
     }
     setFavorited(!favorited);
   }, [favorited]);

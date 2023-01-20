@@ -20,11 +20,11 @@ const PokemonScreen: React.FC = () => {
   const { pokemon } = usePoke();
   const { setOptions } = useNavigation();
 
-  console.log(
-    "pokemon",
-    pokemon!.evolutions
-    // getColor(pokemon!.types[0].type.name)
-  );
+  // console.log(
+  //   "pokemon",
+  //   pokemon!.evolutions
+  //   // getColor(pokemon!.types[0].type.name)
+  // );
 
   return (
     <ScrollView
@@ -189,9 +189,9 @@ const PokemonScreen: React.FC = () => {
                   alignItems: "center",
                   paddingLeft: 20,
                 }}
+                key={idx}
               >
                 <PokeImage
-                  key={idx}
                   source={{ uri: evo.img }}
                   style={{
                     height: 100,
