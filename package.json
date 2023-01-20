@@ -42,14 +42,9 @@
     "react-native-svg": "12.5.0",
     "react-native-svg-transformer": "^1.0.0",
     "react-native-vector-icons": "9.2.0",
-<<<<<<< HEAD
     "react-native-web": "0.18.7",
-    "styled-components": "5.3.5"
-=======
-    "react-native-web": "0.18.10",
     "realm": "^11.2.0",
     "styled-components": "5.3.6"
->>>>>>> e0a0857d7324eb33bb78d4b5c7a10fbc15cd5b77
   },
   "devDependencies": {
     "@babel/core": "7.20.12",
