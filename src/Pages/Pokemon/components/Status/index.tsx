@@ -1,7 +1,7 @@
-import React from "react";
-import { Text, StyleSheet } from "react-native";
-import { ProgressBar } from "react-native-paper";
-import { Stat, StatsContainer } from "./style";
+import React from 'react';
+import { Text, StyleSheet } from 'react-native';
+import { ProgressBar } from 'react-native-paper';
+import { Stat, StatsContainer } from './style';
 
 interface IStatus {
   stats:
@@ -18,7 +18,7 @@ interface IStatus {
 }
 
 const PokemonStatus = ({ stats, color }: IStatus) => {
-  console.log({ stats });
+  // console.log({ stats });
   return (
     <StatsContainer>
       <Stat>
@@ -28,8 +28,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
             {
               marginRight: 31,
             },
-          ]}
-        >
+          ]}>
           HP
         </Text>
         <ProgressBar
@@ -47,8 +46,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
             {
               marginRight: 10,
             },
-          ]}
-        >
+          ]}>
           Attack
         </Text>
         <ProgressBar
@@ -64,8 +62,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
             {
               marginRight: 10,
             },
-          ]}
-        >
+          ]}>
           Defense
         </Text>
         <ProgressBar
@@ -81,8 +78,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
             {
               marginRight: 10,
             },
-          ]}
-        >
+          ]}>
           Speed
         </Text>
         <ProgressBar
@@ -98,8 +94,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
             {
               marginRight: 10,
             },
-          ]}
-        >
+          ]}>
           Special Attack
         </Text>
         <ProgressBar
@@ -115,8 +110,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
             {
               marginRight: 10,
             },
-          ]}
-        >
+          ]}>
           Special Defense
         </Text>
         <ProgressBar
@@ -136,7 +130,7 @@ const styles = StyleSheet.create({
   },
   progress: {
     borderRadius: 10,
-    width: "80%",
+    width: '80%',
     height: 8,
   },
 });

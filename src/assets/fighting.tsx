@@ -1,5 +1,5 @@
-import React from "react";
-import { Svg, Path } from "react-native-svg";
+import React from 'react';
+import { Svg, Path } from 'react-native-svg';
 const Fighting = () => {
   return (
     <Svg width="15" height="15" viewBox="0 0 512 512" fill="none">

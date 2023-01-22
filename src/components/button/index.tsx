@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import {
   ImageSourcePropType,
   TouchableNativeFeedbackProps,
-} from "react-native";
-import { ButtonElement, Text, Image } from "./styles";
+} from 'react-native';
+import { ButtonElement, Text, Image } from './styles';
 
 interface IButton extends TouchableNativeFeedbackProps {
   title: string;

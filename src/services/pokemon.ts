@@ -1,7 +1,7 @@
-import { FavPokemon } from "../models/pokemon";
-import { DatabaseConnection } from "../database/connection";
+import { FavPokemon } from '../models/pokemon';
+import { DatabaseConnection } from '../database/connection';
 
-const table = "pokemon";
+const table = 'pokemon';
 const db = DatabaseConnection.getConnection();
 
 export class PokemonService {
@@ -10,13 +10,13 @@ export class PokemonService {
       db.transaction(
         (tx) => {
           tx.executeSql(
-            `insert into \`${table}\`('index','name') 
-                values (${param.index},'${param.name}')`,
+            `insert into \`${table}\`('index','name','img_url') 
+                values (${param.index},'${param.name}','${param.img_url}')`,
             [],
             (_, { insertId, rows }) => {
-              console.log("id insert: " + insertId);
+              // console.info('id insert: ' + insertId);
               resolve(insertId);
-            }
+            },
           ),
             (sqlError: any) => {
               console.error(sqlError);
@@ -24,8 +24,8 @@ export class PokemonService {
         },
         (txError) => {
           console.error(txError);
-        }
-      )
+        },
+      ),
     );
   }
 
@@ -33,9 +33,9 @@ export class PokemonService {
     db.transaction(
       (tx) => {
         tx.executeSql(
-          "delete from `pokemon` where `index` = ?;",
+          'delete from `pokemon` where `index` = ?;',
           [index],
-          (_, { rows }) => {}
+          (_, { rows }) => {},
         ),
           (sqlError: any) => {
             console.log(sqlError);
@@ -43,29 +43,9 @@ export class PokemonService {
       },
       (txError) => {
         console.log(txError);
-      }
+      },
     );
   }
-
-  //   static updateById(param: Animal) {
-  //     return new Promise((resolve, reject) =>
-  //       db.transaction(
-  //         (tx) => {
-  //           tx.executeSql(
-  //             `update ${table} set nome = ? where id = ?;`,
-  //             [param.nome, param.id],
-  //             () => {}
-  //           ),
-  //             (sqlError) => {
-  //               console.log(sqlError);
-  //             };
-  //         },
-  //         (txError) => {
-  //           console.log(txError);
-  //         }
-  //       )
-  //     );
-  //   }
 
   findById(index: number) {
     return new Promise((resolve, reject) =>
@@ -76,7 +56,7 @@ export class PokemonService {
             [],
             (_, { rows }) => {
               resolve(rows);
-            }
+            },
           ),
             (sqlError: any) => {
               console.error(sqlError);
@@ -84,8 +64,8 @@ export class PokemonService {
         },
         (txError) => {
           console.error(txError);
-        }
-      )
+        },
+      ),
     );
   }
 
@@ -102,8 +82,25 @@ export class PokemonService {
         },
         (txError) => {
           console.log(txError);
-        }
-      )
+        },
+      ),
+    );
+  }
+  deleteAll() {
+    return new Promise((resolve, reject) =>
+      db.transaction(
+        (tx) => {
+          tx.executeSql(`delete from ${table}`, [], (_, { rows }) => {
+            resolve('');
+          }),
+            (sqlError: any) => {
+              console.log(sqlError);
+            };
+        },
+        (txError) => {
+          console.log(txError);
+        },
+      ),
     );
   }
 }

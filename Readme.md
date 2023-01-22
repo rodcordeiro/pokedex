@@ -5,10 +5,12 @@
 A simple pokedex application for practice.
 
 ## Technologies
-### Thanks to
- [Pokemon types svg icons](https://github.com/duiker101/pokemon-type-svg-icons)
 
-<!-- 
+### Thanks to
+
+[Pokemon types svg icons](https://github.com/duiker101/pokemon-type-svg-icons)
+
+<!--
 https://dribbble.com/shots/14500564-Pokedex
 https://dribbble.com/shots/17332968-Pok-dex-Apps-Design-Exploration
 https://dribbble.com/shots/16833947-Mobile-Pokedex-App-Design-Exploration

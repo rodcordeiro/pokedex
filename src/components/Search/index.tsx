@@ -4,11 +4,11 @@ import React, {
   useRef,
   useCallback,
   useEffect,
-} from "react";
-import { TextInputProps, ActivityIndicator } from "react-native";
-import { useField } from "@unform/core";
-import { useTheme } from "styled-components";
-import { Container, Input, Icon } from "./style";
+} from 'react';
+import { TextInputProps, ActivityIndicator } from 'react-native';
+import { useField } from '@unform/core';
+import { useTheme } from 'styled-components';
+import { Container, Input, Icon } from './style';
 
 interface IInputProps extends TextInputProps {
   name: string;
@@ -18,9 +18,9 @@ interface IInputProps extends TextInputProps {
 
 const SearchInput = (
   { name, isLoading, placeholder, ...rest }: IInputProps,
-  ref: any
+  ref: any,
 ) => {
-  const { registerField, defaultValue = "", fieldName } = useField(name);
+  const { registerField, defaultValue = '', fieldName } = useField(name);
   const inputElementRef = useRef<any>(null);
   const inputValueRef = useRef({ value: defaultValue });
   const [focused, setFocused] = React.useState(false);
@@ -42,13 +42,13 @@ const SearchInput = (
     registerField<string>({
       name: fieldName,
       ref: inputValueRef.current,
-      path: "value",
+      path: 'value',
       setValue(reference: any, value: any) {
         inputValueRef.current.value = value;
         inputElementRef.current.setNativeProps({ text: value });
       },
       clearValue() {
-        inputValueRef.current.value = "";
+        inputValueRef.current.value = '';
         inputElementRef.current.clear();
       },
     });
