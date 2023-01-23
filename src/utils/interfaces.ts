@@ -289,6 +289,7 @@ export interface IPokemon extends IPokemonResponse {
   evolutions: {
     name: string;
     img: string;
+    id: number;
   }[];
 }
 

@@ -40,15 +40,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text
-          style={[
-            styles.statText,
-            {
-              marginRight: 10,
-            },
-          ]}>
-          Attack
-        </Text>
+        <Text style={[styles.statText]}>Attack</Text>
         <ProgressBar
           progress={stats.attack / 400}
           color={color}
@@ -56,15 +48,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text
-          style={[
-            styles.statText,
-            {
-              marginRight: 10,
-            },
-          ]}>
-          Defense
-        </Text>
+        <Text style={[styles.statText]}>Defense: {stats.defense}</Text>
         <ProgressBar
           progress={stats.defense / 400}
           color={color}
@@ -72,15 +56,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text
-          style={[
-            styles.statText,
-            {
-              marginRight: 10,
-            },
-          ]}>
-          Speed
-        </Text>
+        <Text style={[styles.statText]}>Speed</Text>
         <ProgressBar
           progress={stats.speed / 400}
           color={color}
@@ -88,15 +64,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text
-          style={[
-            styles.statText,
-            {
-              marginRight: 10,
-            },
-          ]}>
-          Special Attack
-        </Text>
+        <Text style={[styles.statText]}>Special Attack</Text>
         <ProgressBar
           progress={stats.specialAttack / 400}
           color={color}
@@ -104,15 +72,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text
-          style={[
-            styles.statText,
-            {
-              marginRight: 10,
-            },
-          ]}>
-          Special Defense
-        </Text>
+        <Text style={[styles.statText]}>Special Defense</Text>
         <ProgressBar
           progress={stats.specialDefense / 400}
           color={color}

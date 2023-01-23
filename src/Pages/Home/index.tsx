@@ -6,6 +6,7 @@ import Toast from 'react-native-root-toast';
 import { useNavigation } from '@react-navigation/native';
 import { Button, SearchInput } from '../../components';
 import pokeball from '../../../assets/icon.png';
+import heartShappedPokeball from '../../assets/heart_shapped.png';
 import { Container, Title, Line } from './style';
 import { usePoke } from '../../hooks/poke';
 
@@ -84,9 +85,17 @@ const HomeScreen: React.FC = () => {
         icon={pokeball}
         onPress={handleRandomSearch}
       />
+      <Line />
       <Button
         title="List favorited"
-        icon={pokeball}
+        icon={heartShappedPokeball}
+        iconStyle={{
+          height: 150,
+          width: 150,
+          top: 0,
+          right: -22,
+          // transform: 'rotate(45deg)',
+        }}
         onPress={() => {
           // @ts-ignore
           navigate('FavoritesScreen');

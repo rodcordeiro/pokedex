@@ -184,7 +184,9 @@ const PokemonScreen: React.FC = () => {
                     width: 100,
                   }}
                 />
-                <PokeId style={{ color: 'black' }}>{evo.name}</PokeId>
+                <PokeId style={{ color: 'black' }}>
+                  #{paddy(evo.id, 4)}| {evo.name}
+                </PokeId>
               </View>
             ))}
           </ScrollView>

@@ -7,8 +7,9 @@ import Fairy from '../assets/fairy';
 import Fighting from '../assets/fighting';
 import Fire from '../assets/fire';
 import Flying from '../assets/flying';
-
+import Ghost from '../assets/ghost';
 import Pokeball from '../assets/pokeball_2';
+
 export function getIcon(type: string): MemoExoticComponent<any> {
   switch (type) {
     case 'bug':
@@ -27,8 +28,8 @@ export function getIcon(type: string): MemoExoticComponent<any> {
       return Fire;
     case 'flying':
       return Flying;
-    // case "ghost":
-    //   return Bug;
+    case 'ghost':
+      return Ghost;
     // case "grass":
     //   return Bug;
     // case "ground":
