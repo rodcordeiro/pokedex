@@ -2,7 +2,7 @@ import React, { MemoExoticComponent } from 'react';
 import Bug from '../assets/bug';
 import Dark from '../assets/dark';
 import Dragon from '../assets/dragon';
-import Electric from '../assets/dragon';
+import Electric from '../assets/electric';
 import Fairy from '../assets/fairy';
 import Fighting from '../assets/fighting';
 import Fire from '../assets/fire';
