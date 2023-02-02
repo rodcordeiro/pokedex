@@ -62,7 +62,7 @@ interface IEvolutionDetails {
   party_species: any;
   party_type: any;
   relative_physical_stats: any;
-  time_of_day: "";
+  time_of_day: '';
   trade_species: any;
   trigger: {
     name: string;
@@ -70,7 +70,7 @@ interface IEvolutionDetails {
   };
   turn_upside_down: boolean;
 }
-interface IEvolvesTo {
+export interface IEvolvesTo {
   evolution_details: IEvolutionDetails[];
   evolves_to: IEvolvesTo[];
   is_baby: boolean;
@@ -110,7 +110,7 @@ export interface IPokemonResponse {
     {
       item: iHeldItems_Item[];
       version_details: iHeldItems_version[];
-    }
+    },
   ];
   id: number;
   is_default: boolean;
@@ -143,7 +143,7 @@ export interface IPokemonResponse {
         front_shiny: string;
         front_shiny_female: string;
       };
-      "official-artwork": {
+      'official-artwork': {
         front_default: string;
       };
     };
@@ -183,7 +183,7 @@ export interface IPokemonSpecie {
     {
       name: string;
       url: string;
-    }
+    },
   ];
   evolution_chain: {
     url: string;
@@ -203,7 +203,7 @@ export interface IPokemonSpecie {
         name: string;
         url: string;
       };
-    }
+    },
   ];
   form_descriptions: [];
   forms_switchable: boolean;
@@ -215,7 +215,7 @@ export interface IPokemonSpecie {
         name: string;
         url: string;
       };
-    }
+    },
   ];
   generation: {
     name: string;
@@ -243,7 +243,7 @@ export interface IPokemonSpecie {
         url: string;
       };
       name: string;
-    }
+    },
   ];
   order: number;
   pal_park_encounters: [
@@ -254,7 +254,7 @@ export interface IPokemonSpecie {
       };
       base_score: number;
       rate: number;
-    }
+    },
   ];
   pokedex_numbers: [
     {
@@ -263,7 +263,7 @@ export interface IPokemonSpecie {
         name: string;
         url: string;
       };
-    }
+    },
   ];
   shape: {
     name: string;
@@ -276,7 +276,7 @@ export interface IPokemonSpecie {
         name: string;
         url: string;
       };
-    }
+    },
   ];
 }
 

@@ -1,14 +1,9 @@
-import React from "react";
-import { Svg, Path } from "react-native-svg";
+import React from 'react';
+import { Svg, Path } from 'react-native-svg';
 
 const Fire = () => {
   return (
-    <Svg
-      width="15"
-      height="15"
-      viewBox="0 0 512 512"
-      fill="none"
-    >
+    <Svg width="15" height="15" viewBox="0 0 512 512" fill="none">
       <Path
         fill-rule="evenodd"
         clip-rule="evenodd"

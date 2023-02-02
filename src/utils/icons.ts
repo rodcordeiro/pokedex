@@ -1,34 +1,35 @@
-import React, { MemoExoticComponent } from "react";
-import Bug from "../assets/bug";
-import Dark from "../assets/dark";
-import Dragon from "../assets/dragon";
-import Electric from "../assets/dragon";
-import Fairy from "../assets/fairy";
-import Fighting from "../assets/fighting";
-import Fire from "../assets/fire";
-import Flying from "../assets/flying";
+import React, { MemoExoticComponent } from 'react';
+import Bug from '../assets/bug';
+import Dark from '../assets/dark';
+import Dragon from '../assets/dragon';
+import Electric from '../assets/electric';
+import Fairy from '../assets/fairy';
+import Fighting from '../assets/fighting';
+import Fire from '../assets/fire';
+import Flying from '../assets/flying';
+import Ghost from '../assets/ghost';
+import Pokeball from '../assets/pokeball_2';
 
-import Pokeball from "../assets/pokeball_2";
 export function getIcon(type: string): MemoExoticComponent<any> {
   switch (type) {
-    case "bug":
+    case 'bug':
       return Bug;
-    case "dark":
+    case 'dark':
       return Dark;
-    case "dragon":
+    case 'dragon':
       return Dragon;
-    case "electric":
+    case 'electric':
       return Electric;
-    case "fairy":
+    case 'fairy':
       return Fairy;
-    case "fighting":
+    case 'fighting':
       return Fighting;
-    case "fire":
+    case 'fire':
       return Fire;
-    case "flying":
+    case 'flying':
       return Flying;
-    // case "ghost":
-    //   return Bug;
+    case 'ghost':
+      return Ghost;
     // case "grass":
     //   return Bug;
     // case "ground":

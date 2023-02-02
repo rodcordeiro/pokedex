@@ -1,6 +1,6 @@
-import React from "react";
-import { getColor, getIcon } from "../../utils";
-import { Container, Text } from "./styles";
+import React from 'react';
+import { getColor, getIcon } from '../../utils';
+import { Container, Text } from './styles';
 interface iTag {
   type: string;
 }

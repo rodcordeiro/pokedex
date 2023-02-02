@@ -1,6 +1,6 @@
-import "styled-components";
+import 'styled-components';
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme {
     title: string;
     color: {
@@ -8,7 +8,7 @@ declare module "styled-components" {
       secondary: string;
       background: string;
       text: string;
-      button:string;
+      button: string;
     };
   }
 }
@@ -19,6 +19,7 @@ export interface ITheme {
     primary: string;
     secondary: string;
     background: string;
-    text: string;button:string;
+    text: string;
+    button: string;
   };
 }

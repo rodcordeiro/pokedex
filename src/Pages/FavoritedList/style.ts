@@ -15,8 +15,8 @@ export const PokeName = styled.Text`
   font-size: 40px;
   color: white;
   text-transform: uppercase;
-  /* text-emphasis: inherit;
-  text-emphasis-color: black; */
+  text-emphasis: inherit;
+  text-emphasis-color: black;
   font-family: Quicksand_700Bold;
 `;
 
@@ -44,4 +44,5 @@ export const PokemonDescription = styled.Text`
   width: 80%;
   padding: 0px 5px;
   margin: 10px;
+  justify-self: center;
 `;
