@@ -6,6 +6,9 @@ import {
   NativeScrollEvent,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { FlatList } from 'react-native-gesture-handler';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 import { usePoke } from '../../hooks/poke';
 import { camelCase, paddy } from '../../utils';
@@ -17,9 +20,11 @@ import {
   PokeImage,
   PokemonDescription,
   PokeName,
+  styles,
 } from './style';
 import { BackArrow, Tag } from '../../components';
 import PokemonStatus from './components/Status';
+import { PokeEvolution } from './components/pokeEvolution';
 
 const PokemonScreen: React.FC = () => {
   const { navigate, canGoBack, goBack } = useNavigation();
@@ -146,6 +151,7 @@ const PokemonScreen: React.FC = () => {
           borderTopLeftRadius: 25,
           borderTopRightRadius: 25,
           backgroundColor: 'white',
+          height: 350,
         }}>
         <PokeData>
           <PokemonDescription>{pokemon?.description}</PokemonDescription>
@@ -163,33 +169,26 @@ const PokemonScreen: React.FC = () => {
           style={{
             width: 400,
           }}>
-          <PokemonDescription>Evolutions</PokemonDescription>
-          <ScrollView
+          <View
             style={{
-              height: 200,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
             }}>
-            {pokemon?.evolutions?.map((evo, idx) => (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  // justifyContent: "center",
-                  alignItems: 'center',
-                  paddingLeft: 20,
-                }}
-                key={idx}>
-                <PokeImage
-                  source={{ uri: evo.img }}
-                  style={{
-                    height: 100,
-                    width: 100,
-                  }}
-                />
-                <PokeId style={{ color: 'black' }}>
-                  #{paddy(evo.id, 4)}| {evo.name}
-                </PokeId>
-              </View>
-            ))}
-          </ScrollView>
+            <PokemonDescription>Evolutions</PokemonDescription>
+            <SimpleLineIcons name="question" style={styles.evoInfoIcon} />
+          </View>
+          <FlatList
+            data={pokemon?.evolutions}
+            renderItem={({ item, index }) => (
+              <PokeEvolution
+                id={item.id}
+                idx={index}
+                img={item.img}
+                name={item.name}
+              />
+            )}
+          />
         </PokeData>
       </ScrollView>
     </ScrollView>
