@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 export const Header = styled.View`
@@ -45,3 +46,11 @@ export const PokemonDescription = styled.Text`
   padding: 0px 5px;
   margin: 10px;
 `;
+
+export const styles = StyleSheet.create({
+  evoInfoIcon: {
+    position: 'absolute',
+    left: 90,
+    fontSize: 10,
+  },
+});
