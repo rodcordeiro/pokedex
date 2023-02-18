@@ -48,7 +48,8 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text style={[styles.statText]}>Defense: {stats.defense}</Text>
+        {/* <Text style={[styles.statText]}>Defense: {stats.defense}</Text> */}
+        <Text style={[styles.statText]}>Defense</Text>
         <ProgressBar
           progress={stats.defense / 400}
           color={color}
