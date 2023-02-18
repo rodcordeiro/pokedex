@@ -1,35 +1,38 @@
 {
-    "cli": {
-        "version": ">= 3.6.0"
+  "cli": {
+    "version": ">= 3.6.0"
+  },
+  "build": {
+    "development": {
+      "distribution": "internal",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "buildConfiguration": "Debug",
+        "resourceClass": "m1-medium"
+      },
+      "channel": "development"
     },
-    "build": {
-        "development": {
-            "distribution": "internal",
-            "android": {
-                "gradleCommand": ":app:assembleDebug"
-            },
-            "ios": {
-                "buildConfiguration": "Debug",
-                "resourceClass": "m1-medium"
-            }
-        },
-        "preview": {
-            "distribution": "internal",
-            "ios": {
-                "resourceClass": "m1-medium"
-            }
-        },
-        "production": {
-            "android": {
-                "buildType": "apk",
-                "gradleCommand": ":app:assembleRelease"
-            },
-            "ios": {
-                "resourceClass": "m1-medium"
-            }
-        }
+    "preview": {
+      "channel": "beta",
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m1-medium"
+      }
     },
-    "submit": {
-        "production": {}
+    "production": {
+      "channel": "production",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "ios": {
+        "resourceClass": "m1-medium"
+      }
     }
+  },
+  "submit": {
+    "production": {}
+  }
 }
