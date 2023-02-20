@@ -8,6 +8,7 @@ import Fighting from '../assets/fighting';
 import Fire from '../assets/fire';
 import Flying from '../assets/flying';
 import Ghost from '../assets/ghost';
+import Ice from '../assets/ice';
 import Pokeball from '../assets/pokeball_2';
 
 export function getIcon(type: string): MemoExoticComponent<any> {
@@ -34,8 +35,8 @@ export function getIcon(type: string): MemoExoticComponent<any> {
     //   return Bug;
     // case "ground":
     //   return Bug;
-    // case "ice":
-    //   return Bug;
+    case 'ice':
+      return Ice;
     // case "normal":
     //   return Bug;
     // case "poison":
