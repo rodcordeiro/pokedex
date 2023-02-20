@@ -2,6 +2,7 @@ import {
   getPokemon,
   getPokemonEvolutionChain,
   getPokemonSpecie,
+  getPokemonColor,
 } from '../api/requests';
 import { getColor } from './colors';
 import { evolutionDetails } from './evoDetails';
@@ -18,6 +19,7 @@ export const getPokemonData = async (search: string) => {
     .catch((err) => {
       throw err;
     });
+
   if (species.evolution_chain) {
     const evolutions = await getPokemonEvolutionChain(
       species.evolution_chain.url,
@@ -51,6 +53,8 @@ export const getPokemonData = async (search: string) => {
   pokemon.is_baby = species.is_baby;
   pokemon.is_legendary = species.is_legendary;
   pokemon.is_mythical = species.is_mythical;
+  // console.log(species.habitat);
+  pokemon.habitat = species.habitat ? species.habitat.name : undefined;
   pokemon.color = getColor(pokemon.types![0].type.name);
   return pokemon;
 };

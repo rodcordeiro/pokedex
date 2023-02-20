@@ -29,7 +29,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
               marginRight: 31,
             },
           ]}>
-          HP
+          HP: {stats.hp}
         </Text>
         <ProgressBar
           progress={stats.hp / 400}
@@ -40,7 +40,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text style={[styles.statText]}>Attack</Text>
+        <Text style={[styles.statText]}>Attack: {stats.attack}</Text>
         <ProgressBar
           progress={stats.attack / 400}
           color={color}
@@ -48,8 +48,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        {/* <Text style={[styles.statText]}>Defense: {stats.defense}</Text> */}
-        <Text style={[styles.statText]}>Defense</Text>
+        <Text style={[styles.statText]}>Defense: {stats.defense}</Text>
         <ProgressBar
           progress={stats.defense / 400}
           color={color}
@@ -57,7 +56,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text style={[styles.statText]}>Speed</Text>
+        <Text style={[styles.statText]}>Speed: {stats.speed}</Text>
         <ProgressBar
           progress={stats.speed / 400}
           color={color}
@@ -65,7 +64,9 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text style={[styles.statText]}>Special Attack</Text>
+        <Text style={[styles.statText]}>
+          Special Attack: {stats.specialAttack}
+        </Text>
         <ProgressBar
           progress={stats.specialAttack / 400}
           color={color}
@@ -73,7 +74,9 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text style={[styles.statText]}>Special Defense</Text>
+        <Text style={[styles.statText]}>
+          Special Defense: {stats.specialDefense}
+        </Text>
         <ProgressBar
           progress={stats.specialDefense / 400}
           color={color}
