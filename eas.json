@@ -36,10 +36,6 @@
     }
   },
   "submit": {
-    "production": {
-      "android": {
-        "gradleCommand": ":app:assembleRelease"
-      }
-    }
+    "production": {}
   }
 }

@@ -24,9 +24,11 @@ import {
   styles,
 } from './style';
 import { BackArrow, Tag } from '../../components';
+import { ToolTip } from '../../components/Tooltip';
 import PokemonStatus from './components/Status';
 import { PokeEvolution } from './components/pokeEvolution';
 import { ScrollIndicator } from './components/scrollerIndication';
+
 const PokemonScreen: React.FC = () => {
   const { navigate, canGoBack, goBack } = useNavigation();
   const { pokemon } = usePoke();
@@ -111,15 +113,23 @@ const PokemonScreen: React.FC = () => {
           <ScrollIndicator color={String(pokemon?.color?.tag)} page={1} />
         </PokeData>
         <PokeData>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              height: 45,
-            }}>
-            <SimpleLineIcons name="question" style={styles.evoInfoIcon} />
-            <Text>Status</Text>
-          </View>
+          <ToolTip text="Status" color={String(pokemon?.color?.tag)}>
+            <>
+              <Text style={{ textAlign: 'center' }}>
+                Bellow are the stats of this pokemon.
+              </Text>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  width: '80%',
+                  fontSize: 12,
+                  fontFamily: 'PTMono_400Regular',
+                }}>
+                P.S.: The percentage bar is calculated using 400 as base value,
+                due to some pokemon with huge hp or attack
+              </Text>
+            </>
+          </ToolTip>
           <PokemonStatus
             stats={Object.fromEntries(
               pokemon!.stats!.map((stat) => [
@@ -132,16 +142,11 @@ const PokemonScreen: React.FC = () => {
           <ScrollIndicator color={String(pokemon?.color?.tag)} page={2} />
         </PokeData>
         <PokeData>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              // width: 100,
-              height: 45,
-            }}>
-            <SimpleLineIcons name="question" style={styles.evoInfoIcon} />
-            <Text>Evolutions</Text>
-          </View>
+          <ToolTip text="Evolutions" color={String(pokemon?.color?.tag)}>
+            <Text style={{ textAlign: 'center' }}>
+              Press and hold an evolution to search for it.
+            </Text>
+          </ToolTip>
           <FlatList
             data={pokemon?.evolutions}
             renderItem={({ item, index }) => (
