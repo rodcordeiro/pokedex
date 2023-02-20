@@ -4,11 +4,11 @@ import {
   View,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  BackHandler,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import { Feather, Octicons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import { usePoke } from '../../hooks/poke';
 import { camelCase, capitalize, paddy } from '../../utils';
 
@@ -30,7 +30,7 @@ import { PokeEvolution } from './components/pokeEvolution';
 import { ScrollIndicator } from './components/scrollerIndication';
 
 const PokemonScreen: React.FC = () => {
-  const { navigate, canGoBack, goBack } = useNavigation();
+  const { canGoBack, goBack } = useNavigation();
   const { pokemon } = usePoke();
   const { setOptions } = useNavigation();
 
@@ -49,6 +49,22 @@ const PokemonScreen: React.FC = () => {
       });
     }
   };
+
+  React.useEffect(() => {
+    function handleBackButtonClick() {
+      if (canGoBack()) {
+        goBack();
+      }
+      return true;
+    }
+    BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+    return () => {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        handleBackButtonClick,
+      );
+    };
+  }, [canGoBack, goBack]);
 
   return (
     <ScrollView
