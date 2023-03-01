@@ -26,4 +26,4 @@ jobs:
         run: yarn install
 
       - name: 🚀 Publish preview
-        run: eas update --channel=beta --message ${{ github.event.head_commit.message }}
+        run: eas update --channel=beta --message "${{ github.event.head_commit.message }}"
