@@ -27,11 +27,11 @@ jobs:
           node-version: 14.x
       - uses: expo/expo-github-action@v7
         with:
-          expo-version: 4.x
-          expo-cache: true
+          eas-version: latest
+          eas-cache: true
           token: ${{ secrets.EXPO_TOKEN }}
       - run: npm install
-      - run: expo publish --non-interactive
+      - run: eas update --channel=production --message "${{ github.event.head_commit.message }}"
   GenerateNewBuild:
     name: Build new artifact
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
           eas-cache: true
           token: ${{ secrets.EXPO_TOKEN }}
       - run: npm install
-      - run: eas -p android --profile production
+      - run: eas build -p android --profile production
   #     - name: Upload result for building job
   #       uses: actions/upload-artifact@v3
   #       with:
