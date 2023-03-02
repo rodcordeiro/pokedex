@@ -1,42 +1,42 @@
 {
-  "cli": {
-    "version": ">= 3.6.0"
-  },
-  "build": {
-    "development": {
-      "distribution": "internal",
-      "android": {
-        "gradleCommand": ":app:assembleDebug"
-      },
-      "ios": {
-        "buildConfiguration": "Debug",
-        "resourceClass": "m1-medium"
-      },
-      "channel": "development"
+    "cli": {
+        "version": ">= 3.6.0"
     },
-    "preview": {
-      "channel": "beta",
-      "distribution": "internal",
-      "android": {
-"buildType":"apk",
-        "gradleCommand": ":app:assembleRelease"
-      },
-      "ios": {
-        "resourceClass": "m1-medium"
-      }
+    "build": {
+        "development": {
+            "distribution": "internal",
+            "android": {
+                "gradleCommand": ":app:assembleDebug"
+            },
+            "ios": {
+                "buildConfiguration": "Debug",
+                "resourceClass": "m1-medium"
+            },
+            "channel": "development"
+        },
+        "preview": {
+            "channel": "beta",
+            "distribution": "internal",
+            "android": {
+                "buildType": "apk",
+                "gradleCommand": ":app:assembleRelease"
+            },
+            "ios": {
+                "resourceClass": "m1-medium"
+            }
+        },
+        "production": {
+            "channel": "production",
+            "android": {
+                "buildType": "apk",
+                "gradleCommand": ":app:assembleRelease"
+            },
+            "ios": {
+                "resourceClass": "m1-medium"
+            }
+        }
     },
-    "production": {
-      "channel": "production",
-      "android": {
-        "buildType": "apk",
-        "gradleCommand": ":app:assembleRelease"
-      },
-      "ios": {
-        "resourceClass": "m1-medium"
-      }
+    "submit": {
+        "production": {}
     }
-  },
-  "submit": {
-    "production": {}
-  }
 }
