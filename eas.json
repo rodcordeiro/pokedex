@@ -18,7 +18,8 @@
       "channel": "beta",
       "distribution": "internal",
       "android": {
-        "gradleCommand": ":app:assembleDebug"
+"buildType":"apk",
+        "gradleCommand": ":app:assembleRelease"
       },
       "ios": {
         "resourceClass": "m1-medium"
