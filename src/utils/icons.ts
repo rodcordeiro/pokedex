@@ -10,7 +10,7 @@ import Flying from '../assets/flying';
 import Ghost from '../assets/ghost';
 import Ice from '../assets/ice';
 import Pokeball from '../assets/pokeball_2';
-
+import Water from '../assets/water';
 export function getIcon(type: string): MemoExoticComponent<any> {
   switch (type) {
     case 'bug':
@@ -47,8 +47,8 @@ export function getIcon(type: string): MemoExoticComponent<any> {
     //   return Bug;
     // case "steel":
     //   return Bug;
-    // case "water":
-    //   return Bug;
+    case 'water':
+      return Water;
     default:
       return Pokeball;
   }
