@@ -12,6 +12,10 @@ import Grass from '../assets/grass';
 import Ground from '../assets/ground';
 import Ice from '../assets/ice';
 import Pokeball from '../assets/pokeball_2';
+import Poison from '../assets/poison';
+import Psychic from '../assets/psychic';
+import Rock from '../assets/rock';
+import Steel from '../assets/steel';
 import Water from '../assets/water';
 
 export function getIcon(type: string): MemoExoticComponent<any> {
@@ -42,14 +46,14 @@ export function getIcon(type: string): MemoExoticComponent<any> {
       return Ice;
     // case "normal":
     //   return Bug;
-    // case "poison":
-    //   return Bug;
-    // case "psychic":
-    //   return Bug;
-    // case "rock":
-    //   return Bug;
-    // case "steel":
-    //   return Bug;
+    case 'poison':
+      return Poison;
+    case 'psychic':
+      return Psychic;
+    case 'rock':
+      return Rock;
+    case 'steel':
+      return Steel;
     case 'water':
       return Water;
     default:
