@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import { Stat, StatsContainer } from './style';
+import { paddy } from '../../../../utils';
 
 interface IStatus {
   stats:
@@ -25,11 +26,11 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         <Text
           style={[
             styles.statText,
-            {
-              marginRight: 31,
-            },
+            // {
+            //   marginRight: 31,
+            // },
           ]}>
-          HP: {stats.hp}
+          HP: {paddy(stats.hp, 3)}
         </Text>
         <ProgressBar
           progress={stats.hp / 400}
@@ -40,7 +41,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text style={[styles.statText]}>Attack: {stats.attack}</Text>
+        <Text style={[styles.statText]}>ATK: {paddy(stats.attack, 3)}</Text>
         <ProgressBar
           progress={stats.attack / 400}
           color={color}
@@ -48,7 +49,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text style={[styles.statText]}>Defense: {stats.defense}</Text>
+        <Text style={[styles.statText]}>DEF: {paddy(stats.defense, 3)}</Text>
         <ProgressBar
           progress={stats.defense / 400}
           color={color}
@@ -56,7 +57,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
         />
       </Stat>
       <Stat>
-        <Text style={[styles.statText]}>Speed: {stats.speed}</Text>
+        <Text style={[styles.statText]}>SPD: {paddy(stats.speed, 3)}</Text>
         <ProgressBar
           progress={stats.speed / 400}
           color={color}
@@ -65,7 +66,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
       </Stat>
       <Stat>
         <Text style={[styles.statText]}>
-          Special Attack: {stats.specialAttack}
+          SATK: {paddy(stats.specialAttack, 3)}
         </Text>
         <ProgressBar
           progress={stats.specialAttack / 400}
@@ -75,7 +76,7 @@ const PokemonStatus = ({ stats, color }: IStatus) => {
       </Stat>
       <Stat>
         <Text style={[styles.statText]}>
-          Special Defense: {stats.specialDefense}
+          SDEF: {paddy(stats.specialDefense, 3)}
         </Text>
         <ProgressBar
           progress={stats.specialDefense / 400}
@@ -91,10 +92,11 @@ export default PokemonStatus;
 const styles = StyleSheet.create({
   statText: {
     marginRight: 10,
+    width: 100,
   },
   progress: {
     borderRadius: 10,
-    width: '80%',
+    width: '60%',
     height: 8,
   },
 });

@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Button, SearchInput } from '../../components';
 import pokeball from '../../../assets/icon.png';
 import heartShappedPokeball from '../../assets/heart_shapped.png';
-import { Container, Title, Line } from './style';
+import { Container, Title, Subtitle, Line } from './style';
 import { usePoke } from '../../hooks/poke';
 
 import { Pokemon } from '../../utils';
@@ -64,12 +64,13 @@ const HomeScreen: React.FC = () => {
 
   return (
     <Container>
-      <Title>What are you looking for?</Title>
+      <Title style={{ marginTop: 100 }}>Pokedex</Title>
+      <Subtitle>Search by pokemon name or pokedex id.</Subtitle>
       <Form ref={formRef} onSubmit={handleSearch}>
         <SearchInput
           ref={refInput}
           name="search"
-          placeholder="Search a pokemon name or ID..."
+          placeholder="What pokemon are you looking for?"
           autoCorrect={false}
           autoCapitalize="none"
           isLoading={loading}
@@ -84,6 +85,8 @@ const HomeScreen: React.FC = () => {
         title="Choose a random Pokemon"
         icon={pokeball}
         onPress={handleRandomSearch}
+        // backgroundColor={'#5DBE62'}
+        // textStyle={{ color: 'white', fontWeight: '400' }}
       />
       <Line />
       <Button
@@ -94,8 +97,9 @@ const HomeScreen: React.FC = () => {
           width: 150,
           top: 0,
           right: -22,
-          // transform: 'rotate(45deg)',
         }}
+        // backgroundColor={'#B863CF'}
+        // textStyle={{ color: 'white', fontWeight: '400' }}
         onPress={() => {
           // @ts-ignore
           navigate('FavoritesScreen');

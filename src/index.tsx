@@ -66,6 +66,7 @@ export default function Pokedex() {
 
   return (
     <ThemeProvider
+      // theme={DarkTheme}>
       theme={String(currentTheme) === 'light' ? DefaultTheme : DarkTheme}>
       <PokeProvider>
         <RootSiblingParent>

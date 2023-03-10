@@ -11,7 +11,7 @@ export const Stat = styled.View`
   width: 100%;
   padding: 5px 10px;
   /* background-color: aliceblue; */
-  /* flex-direction: row;
-  align-items: center;
+  flex-direction: row;
+  /* align-items: center;
   justify-content: flex-start; */
 `;

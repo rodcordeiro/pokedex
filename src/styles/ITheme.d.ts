@@ -9,6 +9,8 @@ declare module 'styled-components' {
       background: string;
       text: string;
       button: string;
+      title: string;
+      subtitle: string;
     };
   }
 }
@@ -21,5 +23,7 @@ export interface ITheme {
     background: string;
     text: string;
     button: string;
+    title: string;
+    subtitle: string;
   };
 }

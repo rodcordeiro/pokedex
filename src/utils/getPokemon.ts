@@ -2,7 +2,6 @@ import {
   getPokemon,
   getPokemonEvolutionChain,
   getPokemonSpecie,
-  getPokemonColor,
 } from '../api/requests';
 import { getColor } from './colors';
 import { evolutionDetails } from './evoDetails';
