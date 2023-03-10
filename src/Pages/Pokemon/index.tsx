@@ -71,7 +71,7 @@ const PokemonScreen: React.FC = () => {
       style={{
         backgroundColor: pokemon?.color?.background,
       }}
-      onScroll={handleScroll}>
+      onScroll={handleScroll} sc>
       <Header>
         <View style={styles.pokeNameContainer}>
           <PokeName style={styles.pokeNameStyle}>{pokemon!.name}</PokeName>
