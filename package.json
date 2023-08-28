@@ -46,7 +46,7 @@
     "react-native-svg-transformer": "^1.0.0",
     "react-native-vector-icons": "9.2.0",
     "react-native-web": "~0.18.11",
-    "realm": "^11.3.2",
+    "realm": "^12.0.0",
     "styled-components": "5.3.11"
   },
   "devDependencies": {
