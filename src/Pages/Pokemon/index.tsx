@@ -4,30 +4,33 @@ import {
   View,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  BackHandler,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-
+import { Feather } from '@expo/vector-icons';
 import { usePoke } from '../../hooks/poke';
-import { camelCase, paddy } from '../../utils';
+import { camelCase, capitalize, paddy } from '../../utils';
 
 import {
   Header,
   PokeData,
+  PokeHabitatContainer,
   PokeId,
+  Text,
   PokeImage,
   PokemonDescription,
   PokeName,
   styles,
 } from './style';
 import { BackArrow, Tag } from '../../components';
+import { ToolTip } from '../../components/Tooltip';
 import PokemonStatus from './components/Status';
 import { PokeEvolution } from './components/pokeEvolution';
+import { ScrollIndicator } from './components/scrollerIndication';
 
 const PokemonScreen: React.FC = () => {
-  const { navigate, canGoBack, goBack } = useNavigation();
+  const { canGoBack, goBack } = useNavigation();
   const { pokemon } = usePoke();
   const { setOptions } = useNavigation();
 
@@ -47,6 +50,22 @@ const PokemonScreen: React.FC = () => {
     }
   };
 
+  React.useEffect(() => {
+    function handleBackButtonClick() {
+      if (canGoBack()) {
+        goBack();
+      }
+      return true;
+    }
+    BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+    return () => {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        handleBackButtonClick,
+      );
+    };
+  }, [canGoBack, goBack]);
+
   return (
     <ScrollView
       style={{
@@ -54,35 +73,10 @@ const PokemonScreen: React.FC = () => {
       }}
       onScroll={handleScroll}>
       <Header>
-        <View
-          style={{
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'baseline',
-            alignSelf: 'flex-start',
-          }}>
-          <PokeName
-            style={{
-              textShadowColor: '#18181866',
-              textShadowOffset: { width: 1, height: 1 },
-              textShadowRadius: 10,
-            }}>
-            {pokemon!.name}
-          </PokeName>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <PokeId
-              style={{
-                marginLeft: 25,
-                padding: 8,
-                textShadowColor: '#18181866',
-                textShadowOffset: { width: 1, height: 1 },
-                textShadowRadius: 5,
-              }}>
+        <View style={styles.pokeNameContainer}>
+          <PokeName style={styles.pokeNameStyle}>{pokemon!.name}</PokeName>
+          <View style={styles.pokeIdContainer}>
+            <PokeId style={styles.pokeIdStyle}>
               #{paddy(pokemon?.id!, 4)}
             </PokeId>
             {pokemon?.is_baby && <Tag type={'baby'} />}
@@ -90,14 +84,7 @@ const PokemonScreen: React.FC = () => {
             {pokemon?.is_mythical && <Tag type={'mythical'} />}
           </View>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignSelf: 'flex-start',
-            marginLeft: 25,
-          }}>
+        <View style={styles.typesContainer}>
           {pokemon?.types!.map(({ type }) => (
             <Tag type={type.name} key={type.name} />
           ))}
@@ -113,32 +100,8 @@ const PokemonScreen: React.FC = () => {
                 pokemon!.sprites!.other['official-artwork'].front_default ||
                 pokemon!.sprites!.front_default,
             }}
-            style={{
-              height: 300,
-              width: 300,
-            }}
+            style={styles.imageSize}
           />
-          {/* <PokeImage
-            source={{ uri: pokemon!.sprites.back_default }}
-            style={{
-              height: 300,
-              width: 300,
-            }}
-          />
-          <PokeImage
-            source={{ uri: pokemon!.sprites.front_shiny }}
-            style={{
-              height: 300,
-              width: 300,
-            }}
-          />
-          <PokeImage
-            source={{ uri: pokemon!.sprites.back_shiny }}
-            style={{
-              height: 300,
-              width: 300,
-            }}
-          /> */}
         </ScrollView>
       </Header>
       <ScrollView
@@ -147,14 +110,42 @@ const PokemonScreen: React.FC = () => {
         alwaysBounceHorizontal
         pagingEnabled
         persistentScrollbar
-        style={{
-          borderTopLeftRadius: 25,
-          borderTopRightRadius: 25,
-          backgroundColor: 'white',
-          height: 350,
-        }}>
+        style={styles.info_scrollview}>
         <PokeData>
           <PokemonDescription>{pokemon?.description}</PokemonDescription>
+          {pokemon?.habitat && (
+            <PokeHabitatContainer>
+              <Feather
+                name="map-pin"
+                style={{
+                  marginTop: 2,
+                }}
+              />
+              <PokemonDescription>
+                Habitat: {capitalize(pokemon?.habitat)}
+              </PokemonDescription>
+            </PokeHabitatContainer>
+          )}
+          <ScrollIndicator color={String(pokemon?.color?.tag)} page={1} />
+        </PokeData>
+        <PokeData>
+          <ToolTip text="Status" color={String(pokemon?.color?.tag)}>
+            <>
+              <Text style={{ textAlign: 'center' }}>
+                Bellow are the stats of this pokemon.
+              </Text>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  width: '80%',
+                  fontSize: 12,
+                  fontFamily: 'PTMono_400Regular',
+                }}>
+                P.S.: The percentage bar is calculated using 400 as base value,
+                due to some pokemon with huge hp or attack
+              </Text>
+            </>
+          </ToolTip>
           <PokemonStatus
             stats={Object.fromEntries(
               pokemon!.stats!.map((stat) => [
@@ -164,30 +155,31 @@ const PokemonScreen: React.FC = () => {
             )}
             color={pokemon!.color!.tag}
           />
+          <ScrollIndicator color={String(pokemon?.color?.tag)} page={2} />
         </PokeData>
-        <PokeData
-          style={{
-            width: 400,
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-            }}>
-            <PokemonDescription>Evolutions</PokemonDescription>
-            <SimpleLineIcons name="question" style={styles.evoInfoIcon} />
-          </View>
+        <PokeData>
+          <ToolTip text="Evolutions" color={String(pokemon?.color?.tag)}>
+            <Text style={{ textAlign: 'center' }}>
+              Press and hold an evolution to search for it.
+            </Text>
+          </ToolTip>
           <FlatList
             data={pokemon?.evolutions}
             renderItem={({ item, index }) => (
               <PokeEvolution
+                key={index}
                 id={item.id}
                 idx={index}
                 img={item.img}
                 name={item.name}
               />
             )}
+            maxToRenderPerBatch={3}
+          />
+          <ScrollIndicator
+            color={String(pokemon?.color?.tag)}
+            page={3}
+            // disableAbsolutePosition
           />
         </PokeData>
       </ScrollView>

@@ -10,7 +10,7 @@ export const evolutionDetails = async (
       data: {
         name: evolutions.species.name,
         img: pokemon.sprites!.front_default,
-        id: pokemon.id,
+        id: pokemon.id!,
       },
       hasEvo: evolutions.evolves_to.length > 0,
     };

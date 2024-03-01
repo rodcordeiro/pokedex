@@ -16,7 +16,8 @@ export class Database {
           `_id` INTEGER not null primary key autoincrement,\
           `index` INTEGER not null default CURRENT_TIMESTAMP,\
           `name` varchar(255) not null,\
-          `img_url` varchar(255) not null\
+          `img_url` varchar(255) not null,\
+          `types` varchar(255) not null\
         );',
     ];
 

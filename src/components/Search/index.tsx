@@ -60,7 +60,7 @@ const SearchInput = (
         <ActivityIndicator size="small" color={themeContext.color.primary} />
       ) : (
         <>
-          <Icon name="search" />
+          <Icon name="search" style={{ color: themeContext.color.text }} />
           <Input
             ref={inputElementRef}
             name={name}
@@ -68,6 +68,7 @@ const SearchInput = (
             onBlur={() => setFocused(false)}
             placeholder={placeholder}
             type="text"
+            placeholderTextColor={themeContext.color.subtitle}
             onChangeText={(value: string) => {
               inputValueRef.current.value = value;
             }}

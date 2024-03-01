@@ -8,6 +8,8 @@ const DefaultTheme: StyledDefault = {
     background: '#f4f4f4',
     text: '#999591', //#999591
     button: '#181818',
+    title: '#33333',
+    subtitle: '#666666',
   },
 };
 const DarkTheme: StyledDefault = {
@@ -17,7 +19,9 @@ const DarkTheme: StyledDefault = {
     secondary: '#71C558',
     background: '#181818',
     text: '#f4f4f4',
-    button: '#666666',
+    button: '#242424',
+    title: '#666666',
+    subtitle: '#444',
   },
 };
 
