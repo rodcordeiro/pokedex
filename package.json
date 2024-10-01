@@ -26,7 +26,7 @@
     "@react-navigation/stack": "6.4.1",
     "@unform/core": "2.1.6",
     "@unform/mobile": "2.1.6",
-    "axios": "1.7.2",
+    "axios": "1.7.7",
     "expo": "^48.0.5",
     "expo-font": "~11.10.0",
     "expo-splash-screen": "~0.26.0",
