@@ -19,7 +19,7 @@
   },
   "author": "Rodrigo Cordeiro (rodrigomendoncca@gmail.com) <https://rodcordeiro.com.br>",
   "dependencies": {
-    "@expo-google-fonts/pt-mono": "^0.2.2",
+    "@expo-google-fonts/pt-mono": "^0.3.0",
     "@expo-google-fonts/quicksand": "^0.2.2",
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/native": "6.1.18",
