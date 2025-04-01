@@ -1608,10 +1608,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.1.tgz#de633db3ec2ef6a3c89e2f19038063e8a122e2c2"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
 
-"@expo-google-fonts/pt-mono@^0.2.2":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/pt-mono/-/pt-mono-0.2.3.tgz#13336c27d5ce517a06fcfcb3942ec615254f8b95"
-  integrity sha512-yfTLilvHedoiae9l5nxD0q3PMMaLz3Tdiu56Td9IkMsDoOP6zNcEMlmLFJkeNaOjuM16BOC/E/YsKCwUAc5WTw==
+"@expo-google-fonts/pt-mono@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/pt-mono/-/pt-mono-0.3.0.tgz#04fc1753fbcf4c6280a3b9d0b8ca96fc8e60f349"
+  integrity sha512-w1h6cPZjWFWCedCkoTfHLZCy1mNCRhIMvHKlo7gfplq4isGHeOoeoMYkbLJlck2OHykFugwg+oSMh1JPmCet1Q==
 
 "@expo-google-fonts/quicksand@^0.2.2":
   version "0.2.3"
