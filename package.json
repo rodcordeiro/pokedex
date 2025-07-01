@@ -20,7 +20,7 @@
   "author": "Rodrigo Cordeiro (rodrigomendoncca@gmail.com) <https://rodcordeiro.com.br>",
   "dependencies": {
     "@expo-google-fonts/pt-mono": "^0.4.0",
-    "@expo-google-fonts/quicksand": "^0.2.2",
+    "@expo-google-fonts/quicksand": "^0.4.0",
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/native": "6.1.18",
     "@react-navigation/stack": "6.4.1",
