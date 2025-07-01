@@ -1613,10 +1613,10 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/pt-mono/-/pt-mono-0.4.0.tgz#ed451545b994f48da9dc19c15bfc12beeb627beb"
   integrity sha512-aAjE9EqA6YOyWqrdNJUmE1tu9+Azmvi1PZqUVd6y6ezxhqzvfi/e3T17hpEffBfudBMdp5AABPWA6Bqxe/StHQ==
 
-"@expo-google-fonts/quicksand@^0.2.2":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/quicksand/-/quicksand-0.2.3.tgz#4838a1b380eefaa8478e63e6f113bd1b495c29d7"
-  integrity sha512-cQhYsOYPBbKzqry0TT87fJz8ZlCKLLeHiECsjI9zRx4pMB3XKnHSWNO7JBDvMA6w9ekcQ17aaBZ4vj9RC2Kgtw==
+"@expo-google-fonts/quicksand@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/quicksand/-/quicksand-0.4.0.tgz#2004935a82e97ed100b07422f9e4a24e73aad79d"
+  integrity sha512-aR0OuptlhrFSgkUXWe66/mU4mv0/G1wGlFjFIRQX4AB5QRGUQ495XqswTgFlmkH2hxdyyGinyYQ8qX4firq/EA==
 
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
   version "4.0.0"
