@@ -1614,11 +1614,11 @@
   integrity sha512-aAjE9EqA6YOyWqrdNJUmE1tu9+Azmvi1PZqUVd6y6ezxhqzvfi/e3T17hpEffBfudBMdp5AABPWA6Bqxe/StHQ==
 
 "@expo-google-fonts/quicksand@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/quicksand/-/quicksand-0.4.0.tgz#2004935a82e97ed100b07422f9e4a24e73aad79d"
-  integrity sha512-aR0OuptlhrFSgkUXWe66/mU4mv0/G1wGlFjFIRQX4AB5QRGUQ495XqswTgFlmkH2hxdyyGinyYQ8qX4firq/EA==
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/quicksand/-/quicksand-0.4.1.tgz#9201751d88985979612d7d16842a4dbe054f98fc"
+  integrity sha512-LpGdmY+CDm/GTv29qDPy8Nz1a3idWO1R6Bb+ty7flS6vfHXsdOQTRKNz93SFHdXQj0FSvVhvMLe3wTtMgf312A==
 
-"@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
+"@expo/bunyan@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@expo/bunyan/-/bunyan-4.0.0.tgz#be0c1de943c7987a9fbd309ea0b1acd605890c7b"
   integrity sha512-Ydf4LidRB/EBI+YrB+cVLqIseiRfjUI/AeHBgjGMtq3GroraDu81OV7zqophRgupngoL3iS3JUMDMnxO7g39qA==
@@ -1627,6 +1627,13 @@
   optionalDependencies:
     mv "~2"
     safe-json-stringify "~1"
+
+"@expo/bunyan@^4.0.0":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@expo/bunyan/-/bunyan-4.0.1.tgz#ab9e17e36c71c704a0ce72168378a487368da736"
+  integrity sha512-+Lla7nYSiHZirgK+U/uYzsLv/X+HaJienbD5AKX1UQZHYfWaP+9uuQluRB4GrEVWF0GZ7vEVp/jzaOT9k/SQlg==
+  dependencies:
+    uuid "^8.0.0"
 
 "@expo/cli@0.7.3":
   version "0.7.3"
