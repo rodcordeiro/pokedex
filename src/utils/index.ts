@@ -1,6 +1,7 @@
 export * from './colors';
 export * from './interfaces';
 export * from './icons';
+export * from './cn';
 
 export function paddy(num: number, padlen: number, padchar?: string) {
   var pad_char = typeof padchar !== 'undefined' ? padchar : '0';

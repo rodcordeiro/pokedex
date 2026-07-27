@@ -286,6 +286,7 @@ export interface IPokemon extends IPokemonResponse {
   is_legendary: boolean;
   is_mythical: boolean;
   color: IColors;
+  habitat: string;
   evolutions: {
     name: string;
     img: string;
