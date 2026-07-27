@@ -21,7 +21,7 @@ const Button: React.FC<IButton> = ({
   icon,
   iconStyle,
   textStyle,
-  backgroundColor = undefined,
+  backgroundColor = '#181818',
   ...rest
 }) => (
   <ButtonElement backgroundColor={backgroundColor} {...rest}>

@@ -26,19 +26,19 @@ const Favorite = () => {
     })();
   }, [pokemon]);
 
-  const handleFavoriting = useCallback(() => {
+  const handleFavoriting = useCallback(async () => {
     if (favorited) {
-      service.deleteById(Number(pokemon?.id));
+      await service.deleteById(Number(pokemon?.id));
     } else {
       const Poke = new FavPokemon(
         pokemon?.id,
         String(pokemon?.name),
         pokemon?.sprites?.front_default,
       );
-      service.addData(Poke);
+      await service.addData(Poke);
     }
     setFavorited(!favorited);
-  }, [favorited]);
+  }, [favorited, pokemon, service]);
   return (
     <BorderlessButton onPress={handleFavoriting} style={styles.favoriteButton}>
       <Icon

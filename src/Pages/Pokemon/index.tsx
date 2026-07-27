@@ -57,13 +57,11 @@ const PokemonScreen: React.FC = () => {
       }
       return true;
     }
-    BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
-    return () => {
-      BackHandler.removeEventListener(
-        'hardwareBackPress',
-        handleBackButtonClick,
-      );
-    };
+    const subscription = BackHandler.addEventListener(
+      'hardwareBackPress',
+      handleBackButtonClick,
+    );
+    return () => subscription.remove();
   }, [canGoBack, goBack]);
 
   return (

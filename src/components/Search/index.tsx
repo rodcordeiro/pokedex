@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { TextInputProps, ActivityIndicator } from 'react-native';
 import { useField } from '@unform/core';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 import { Container, Input, Icon } from './style';
 
 interface IInputProps extends TextInputProps {
@@ -73,7 +73,7 @@ const SearchInput = (
               inputValueRef.current.value = value;
             }}
             keyboardAppearance="dark"
-            {...rest}
+            {...(rest as object)}
           />
         </>
       )}

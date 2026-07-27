@@ -15,8 +15,8 @@ import { getPokemonData } from '../../utils/getPokemon';
 
 const HomeScreen: React.FC = () => {
   const { navigate } = useNavigation();
-  const formRef = useRef<FormHandles>(null);
-  const refInput = useRef<any>();
+  const formRef = useRef<FormHandles>(null!);
+  const refInput = useRef<any>(null);
   const { setPokemon } = usePoke();
   const [loading, setLoading] = React.useState<boolean>(false);
   const POKEMON_INDEX = 1118;
