@@ -29,9 +29,9 @@ const FavoritesScreen: React.FC = () => {
 
   React.useLayoutEffect(() => {
     (async () => {
-      const data: any = await service.findAll();
+      const data = await service.findAll();
       if (data.length > 0) {
-        setPokemons(data._array);
+        setPokemons(data);
       }
     })();
   }, [service]);
