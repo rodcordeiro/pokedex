@@ -146,10 +146,10 @@ importers:
         version: 7.37.5(eslint@9.39.5(jiti@1.21.7)(supports-color@8.1.1))
       prettier:
         specifier: ^3.9.6
-        version: 3.9.6
+        version: 3.9.10
       prettier-plugin-tailwindcss:
         specifier: ^0.8.1
-        version: 0.8.1(prettier@3.9.6)
+        version: 0.8.1(prettier@3.9.10)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2397,6 +2397,7 @@ packages:
     resolution: {integrity: sha512-0IxxoPZbT54IH4fHL5NihkvED9HBVQx3uNdPvyv8pFUHWJ81RdFjL0aJys1IB7hbo09KTz4xW4I2aWVOXKAcJQ==}
     hasBin: true
     peerDependencies:
+      '@expo/dom-webview': '*'
       '@expo/metro-runtime': '*'
       react: '*'
       react-dom: '*'
@@ -2404,6 +2405,8 @@ packages:
       react-native-web: '*'
       react-native-webview: '*'
     peerDependenciesMeta:
+      '@expo/dom-webview':
+        optional: true
       '@expo/metro-runtime':
         optional: true
       react-dom:
@@ -3851,8 +3854,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.9.6:
-    resolution: {integrity: sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==}
+  prettier@3.9.10:
+    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4437,10 +4440,13 @@ packages:
     resolution: {integrity: sha512-tJk5CmKUPMDoTsZQ8m0hHInBk9HFKUPSusqmbBuefDX+yUbMBWea2Ob/wdXFyHW8XZqXkprJscysAdKeGWNqlA==}
     engines: {node: '>= 16'}
     peerDependencies:
+      css-to-react-native: '>= 3.2.0'
       react: '>= 16.8.0'
       react-dom: '>= 16.8.0'
       react-native: '>= 0.68.0'
     peerDependenciesMeta:
+      css-to-react-native:
+        optional: true
       react-dom:
         optional: true
       react-native:
@@ -9665,11 +9671,11 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-tailwindcss@0.8.1(prettier@3.9.6):
+  prettier-plugin-tailwindcss@0.8.1(prettier@3.9.10):
     dependencies:
-      prettier: 3.9.6
+      prettier: 3.9.10
 
-  prettier@3.9.6: {}
+  prettier@3.9.10: {}
 
   pretty-format@26.6.2:
     dependencies:
