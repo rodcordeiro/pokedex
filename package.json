@@ -34,7 +34,7 @@
     "expo-sqlite": "~57.0.1",
     "expo-status-bar": "~57.0.1",
     "expo-updates": "~57.0.10",
-    "nativewind": "4.2.6",
+    "nativewind": "4.2.7",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-native": "0.86.0",
