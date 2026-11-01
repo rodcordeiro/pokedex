@@ -27,12 +27,21 @@ export const PokeId = styled.Text`
   font-family: PTMono_400Regular;
 `;
 
+export const PokeHabitatContainer = styled.View`
+  flex-direction: row;
+  height: 50px;
+  padding: 0px 15px;
+  align-items: center;
+  /* margin: 0px 10px; */
+`;
+
 export const PokeImage = styled.Image`
   /* height: 250px; */
   width: auto;
 `;
 export const PokeData = styled.View`
-  width: 100%;
+  /* width: 100%; */
+  width: 400px;
   max-width: 400px;
   min-height: 400px;
   flex: 1;
@@ -44,13 +53,58 @@ export const PokemonDescription = styled.Text`
   text-align: justify;
   width: 80%;
   padding: 0px 5px;
-  margin: 10px;
+  margin: 10px 15px;
 `;
 
+export const Text = styled.Text`
+  font-family: Quicksand_700Bold;
+`;
 export const styles = StyleSheet.create({
+  pokeNameStyle: {
+    textShadowColor: '#18181866',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 10,
+  },
+  pokeNameContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'baseline',
+    alignSelf: 'flex-start',
+  },
+  pokeIdContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  pokeIdStyle: {
+    marginLeft: 25,
+    padding: 8,
+    textShadowColor: '#18181866',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 5,
+  },
+  typesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    marginLeft: 25,
+  },
+  imageSize: {
+    height: 300,
+    width: 300,
+  },
+  info_scrollview: {
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    backgroundColor: 'white',
+    height: 350,
+  },
   evoInfoIcon: {
-    position: 'absolute',
-    left: 90,
+    // position: 'absolute',
+    paddingLeft: 15,
+    paddingRight: 5,
+    paddingTop: 2.5,
     fontSize: 10,
   },
 });

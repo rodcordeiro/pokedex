@@ -2,10 +2,10 @@ name: "Scan code quality"
 
 on:
   push:
-    branches: ["master", "feat/**", "bug/**", "develop"]
+    branches: ["main", "feat/**", "bug/**", "develop"]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [master]
+    branches: [main]
   schedule:
     - cron: "0 3 * * 1"
 
@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["javascript"]
+        language: ["typescript"]
 
     steps:
       - name: Checkout repository

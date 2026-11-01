@@ -2,25 +2,34 @@
   "expo": {
     "name": "pokedex",
     "slug": "pokedex",
-    "version": "1.0.0",
     "description": "A simple pokedex",
     "owner": "rodcordeiro",
-    "privacy": "public",
     "githubUrl": "https://github.com/rodcordeiro/pokedex",
     "backgroundColor": "#FF3838",
     "primaryColor": "#FF3838",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#f4f4f4"
-    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "cover",
+          "backgroundColor": "#f4f4f4",
+          "enableFullScreenImage_legacy": true
+        }
+      ],
+      "expo-font",
+      "expo-sqlite"
+    ],
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/bcc8cafd-fcd0-4ade-84ac-52f4cc2b9183"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -34,6 +43,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bcc8cafd-fcd0-4ade-84ac-52f4cc2b9183"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

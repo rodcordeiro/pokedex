@@ -6,7 +6,10 @@ interface iTag {
 }
 
 const Tag: React.FC<iTag> = ({ type }) => {
-  const Icon = getIcon(type);
+  const Icon = getIcon(type) as React.ComponentType<{
+    height?: number;
+    width?: number;
+  }> | null;
 
   return (
     <Container style={[{ backgroundColor: getColor(type).tag }]}>

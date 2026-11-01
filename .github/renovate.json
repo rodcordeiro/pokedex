@@ -28,7 +28,7 @@
         "dependencies"
     ],
     "recreateClosed": true,
-    "rebaseWhen": "conflicted",
+    "rebaseWhen": "behind-base-branch",
     "vulnerabilityAlerts": {
         "labels": [
             "security"

@@ -2,105 +2,39 @@ import { FavPokemon } from '../models/pokemon';
 import { DatabaseConnection } from '../database/connection';
 
 const table = 'pokemon';
-const db = DatabaseConnection.getConnection();
 
 export class PokemonService {
-  addData(param: FavPokemon) {
-    return new Promise((resolve, reject) =>
-      db.transaction(
-        (tx) => {
-          tx.executeSql(
-            `insert into \`${table}\`('index','name','img_url') 
-                values (${param.index},'${param.name}','${param.img_url}')`,
-            [],
-            (_, { insertId, rows }) => {
-              // console.info('id insert: ' + insertId);
-              resolve(insertId);
-            },
-          ),
-            (sqlError: any) => {
-              console.error(sqlError);
-            };
-        },
-        (txError) => {
-          console.error(txError);
-        },
-      ),
+  async addData(param: FavPokemon) {
+    const db = await DatabaseConnection.getConnection();
+    const result = await db.runAsync(
+      `INSERT INTO \`${table}\` (\`index\`, name, img_url) VALUES (?, ?, ?)`,
+      param.index,
+      param.name,
+      param.img_url,
+    );
+    return result.lastInsertRowId;
+  }
+
+  async deleteById(index: number) {
+    const db = await DatabaseConnection.getConnection();
+    await db.runAsync('DELETE FROM `pokemon` WHERE `index` = ?;', index);
+  }
+
+  async findById(index: number): Promise<FavPokemon[]> {
+    const db = await DatabaseConnection.getConnection();
+    return db.getAllAsync<FavPokemon>(
+      'SELECT * FROM `pokemon` WHERE `index` = ?',
+      index,
     );
   }
 
-  deleteById(index: number) {
-    db.transaction(
-      (tx) => {
-        tx.executeSql(
-          'delete from `pokemon` where `index` = ?;',
-          [index],
-          (_, { rows }) => {},
-        ),
-          (sqlError: any) => {
-            console.log(sqlError);
-          };
-      },
-      (txError) => {
-        console.log(txError);
-      },
-    );
+  async findAll(): Promise<FavPokemon[]> {
+    const db = await DatabaseConnection.getConnection();
+    return db.getAllAsync<FavPokemon>(`SELECT * FROM ${table}`);
   }
 
-  findById(index: number) {
-    return new Promise((resolve, reject) =>
-      db.transaction(
-        (tx) => {
-          tx.executeSql(
-            `select * from \`pokemon\` where \`index\` = ${index}`,
-            [],
-            (_, { rows }) => {
-              resolve(rows);
-            },
-          ),
-            (sqlError: any) => {
-              console.error(sqlError);
-            };
-        },
-        (txError) => {
-          console.error(txError);
-        },
-      ),
-    );
-  }
-
-  findAll() {
-    return new Promise((resolve, reject) =>
-      db.transaction(
-        (tx) => {
-          tx.executeSql(`select * from ${table}`, [], (_, { rows }) => {
-            resolve(rows);
-          }),
-            (sqlError: any) => {
-              console.log(sqlError);
-            };
-        },
-        (txError) => {
-          console.log(txError);
-        },
-      ),
-    );
-  }
-  deleteAll() {
-    return new Promise((resolve, reject) =>
-      db.transaction(
-        (tx) => {
-          tx.executeSql(`delete from ${table}`, [], (_, { rows }) => {
-            resolve('');
-          }),
-            (sqlError: any) => {
-              console.log(sqlError);
-            };
-        },
-        (txError) => {
-          console.log(txError);
-        },
-      ),
-    );
+  async deleteAll() {
+    const db = await DatabaseConnection.getConnection();
+    await db.runAsync(`DELETE FROM ${table}`);
   }
 }
